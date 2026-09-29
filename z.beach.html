@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tamil Nadu Beaches — Laloo Travel & Tours</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --laloo-primary: #f97316;
+      --laloo-secondary: #ffb347;
+      --laloo-dark: #1f2937;
+      --laloo-muted: #6b7280;
+      --laloo-border: rgba(249, 115, 22, .18);
+      --laloo-shadow: 0 20px 50px rgba(0, 0, 0, .10);
+      --r-lg: 28px;
+      --r-sm: 12px;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Poppins', 'Segoe UI', sans-serif;
+      --gap: 26px;
+      --row-h: 320px;
+      --section-pad: 90px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: var(--font-body);
+      overflow-x: hidden
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    /* ===== Section ===== */
+    .beaches_section {
+      position: relative;
+      overflow: hidden;
+      padding: var(--section-pad) 0;
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right)
+    }
+
+    .beaches_container {
+      position: relative;
+      z-index: 2
+    }
+
+    .beaches_bg_shapes {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none
+    }
+
+    .beaches_shape {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(249, 115, 22, .14), rgba(255, 179, 71, .05));
+      animation: beachesFloat 10s ease-in-out infinite
+    }
+
+    .beaches_shape_1 {
+      width: 220px;
+      height: 220px;
+      top: 5%;
+      left: -60px
+    }
+
+    .beaches_shape_2 {
+      width: 140px;
+      height: 140px;
+      bottom: 10%;
+      right: -40px;
+      animation-delay: 2s
+    }
+
+    .beaches_shape_3 {
+      width: 90px;
+      height: 90px;
+      top: 45%;
+      right: 10%;
+      animation-delay: 4s
+    }
+
+    @keyframes beachesFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1)
+      }
+
+      50% {
+        transform: translateY(-25px) scale(1.05)
+      }
+    }
+
+    /* ===== Intro ===== */
+    .section-head {
+      margin-bottom: 56px
+    }
+
+    .home_section_eyebrow {
+      display: inline-block;
+      color: var(--laloo-primary);
+      font-weight: 600;
+      font-size: .8rem;
+      letter-spacing: 3px;
+      margin-bottom: 12px
+    }
+
+    .home_section_title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      color: var(--laloo-dark);
+      font-weight: 700;
+      margin-bottom: 14px
+    }
+
+    .home_section_title_divider {
+      display: block;
+      width: 64px;
+      height: 3px;
+      margin: 0 auto 18px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--laloo-primary), var(--laloo-secondary))
+    }
+
+    .home_section_subtitle {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--laloo-primary);
+      font-style: italic;
+      margin-bottom: 16px
+    }
+
+    .beaches_description {
+      color: var(--laloo-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 0 auto
+    }
+
+    /* ===== District grid ===== */
+    .beaches_showcase {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--gap);
+      grid-auto-rows: var(--row-h)
+    }
+
+    .beaches_district_card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+      min-width: 0;
+      position: relative;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--laloo-shadow);
+      border: 1px solid var(--laloo-border);
+      isolation: isolate;
+      background: #e5e7eb
+    }
+
+    .beaches_district_card:focus-visible,
+    .beaches_explore_close:focus-visible,
+    .beaches_explore_nav:focus-visible,
+    .beaches_explore_thumb:focus-visible {
+      outline: 3px solid var(--laloo-secondary);
+      outline-offset: 3px
+    }
+
+    .beaches_card_img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s cubic-bezier(.22, 1, .36, 1)
+    }
+
+    .beaches_card_overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(32, 49, 71, 0) 0%, rgba(31, 41, 55, .35) 55%, rgba(31, 41, 55, .88) 100%)
+    }
+
+    .beaches_card_count {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, .18);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 50px;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .5px
+    }
+
+    .beaches_card_body {
+      position: relative;
+      z-index: 2;
+      margin: 15px;
+      padding: 24px 26px
+    }
+
+    .beaches_card_pin {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--laloo-secondary);
+      margin-bottom: 8px
+    }
+
+    .beaches_card_title {
+      font-family: var(--font-heading);
+      color: #fff;
+      font-weight: 700;
+      margin: 0 0 6px;
+      font-size: clamp(1.15rem, 1.6vw, 1.6rem)
+    }
+
+    .beaches_card_names {
+      color: rgba(255, 255, 255, .85);
+      font-size: .85rem;
+      margin: 0 0 16px;
+      line-height: 1.5
+    }
+
+    .beaches_card_btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      background: rgba(255, 255, 255, .16);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .4);
+      color: #fff;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .82rem;
+      transition: background .3s, transform .3s, border-color .3s
+    }
+
+    .beaches_card_btn svg {
+      transition: transform .3s
+    }
+
+    @media (hover:hover) {
+      .beaches_district_card:hover .beaches_card_img {
+        transform: scale(1.12)
+      }
+
+      .beaches_district_card:hover .beaches_card_btn {
+        background: var(--laloo-primary);
+        border-color: var(--laloo-primary);
+        transform: translateX(4px)
+      }
+
+      .beaches_district_card:hover .beaches_card_btn svg {
+        transform: translateX(3px)
+      }
+    }
+
+    /* center a lone last card on the 3-column layout */
+    @media (min-width:992px) {
+      .beaches_district_card:last-child:nth-child(3n+1) {
+        grid-column: 2
+      }
+    }
+
+    /* ===== Slideshow ===== */
+    .beaches_explore_overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background-color: rgba(31, 41, 55, .6);
+      background-image: linear-gradient(rgba(31, 41, 55, .35), rgba(31, 41, 55, .35)), url("assets/image/beaches/beach-bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .4s, visibility .4s
+    }
+
+    .beaches_explore_overlay.beaches_explore_open {
+      opacity: 1;
+      visibility: visible
+    }
+
+    .beaches_explore_modal {
+      position: relative;
+      width: 100%;
+      max-width: 1080px;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, .5);
+      transform: scale(.94) translateY(16px);
+      opacity: 0;
+      transition: transform .45s cubic-bezier(.22, 1, .36, 1), opacity .4s
+    }
+
+    .beaches_explore_open .beaches_explore_modal {
+      transform: none;
+      opacity: 1
+    }
+
+    .beaches_explore_stage {
+      position: relative;
+      width: 100%;
+      height: 62vh;
+      min-height: 380px;
+      max-height: 620px;
+      flex: 0 1 auto
+    }
+
+    .beaches_explore_slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .7s
+    }
+
+    .beaches_explore_slide_active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2
+    }
+
+    .beaches_explore_slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .beaches_explore_slide_overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, .25) 55%, rgba(0, 0, 0, .85) 100%)
+    }
+
+    .beaches_explore_close,
+    .beaches_explore_nav {
+      position: absolute;
+      z-index: 6;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .4);
+      background: rgba(255, 255, 255, .14);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: background .3s, transform .3s
+    }
+
+    .beaches_explore_close {
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px
+    }
+
+    .beaches_explore_close:hover {
+      background: var(--laloo-primary);
+      transform: rotate(90deg)
+    }
+
+    .beaches_explore_nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px
+    }
+
+    .beaches_explore_nav:hover {
+      background: var(--laloo-primary);
+      transform: translateY(-50%) scale(1.08)
+    }
+
+    .beaches_explore_prev {
+      left: 20px
+    }
+
+    .beaches_explore_next {
+      right: 20px
+    }
+
+    .beaches_explore_district_tag {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 6;
+      max-width: calc(100% - 140px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 7px 16px;
+      background: var(--laloo-primary);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 50px;
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase
+    }
+
+    .beaches_explore_counter {
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: .9rem;
+      letter-spacing: 2px;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, .6)
+    }
+
+    .beaches_explore_info {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 5;
+      width: 100%;
+      padding: 30px 90px 26px 32px;
+      color: #fff
+    }
+
+    .beaches_explore_beach_name {
+      font-family: var(--font-heading);
+      font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+      font-weight: 700;
+      margin: 0 0 8px
+    }
+
+    .beaches_explore_beach_desc {
+      font-size: .92rem;
+      color: rgba(255, 255, 255, .9);
+      max-width: 620px;
+      line-height: 1.6;
+      margin: 0 0 12px
+    }
+
+    .beaches_explore_meta_row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .92)
+    }
+
+    .beaches_explore_thumbrow {
+      display: flex;
+      gap: 10px;
+      padding: 14px 20px;
+      background: #111;
+      overflow-x: auto;
+      flex: 0 0 auto;
+      padding-bottom: max(14px, env(safe-area-inset-bottom));
+      -webkit-overflow-scrolling: touch
+    }
+
+    .beaches_explore_thumb {
+      flex: 0 0 auto;
+      width: 90px;
+      height: 60px;
+      border-radius: var(--r-sm);
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: .55;
+      transition: opacity .3s, border-color .3s, transform .3s
+    }
+
+    .beaches_explore_thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .beaches_explore_thumb:hover {
+      opacity: .85
+    }
+
+    .beaches_explore_thumb_active {
+      opacity: 1;
+      border-color: var(--laloo-primary);
+      transform: scale(1.05)
+    }
+
+    /* =====================================================
+   RESPONSIVE — large → small
+   ===================================================== */
+
+    /* XXL ≥1400 */
+    @media (min-width:1400px) {
+      :root {
+        --gap: 30px;
+        --row-h: 340px
+      }
+    }
+
+    /* Laptop 992–1199 */
+    @media (max-width:1199.98px) {
+      :root {
+        --gap: 22px;
+        --row-h: 300px;
+        --section-pad: 80px
+      }
+
+      .beaches_card_body {
+        padding: 20px 22px
+      }
+
+      .beaches_explore_overlay {
+        padding: 0;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none
+      }
+
+      .beaches_explore_modal {
+        max-width: 90%;
+        height: 60%;
+        border-radius: 15px;
+      }
+    }
+
+    /* Tablet landscape / small laptop ≤991 : 2 columns */
+    @media (max-width:991.98px) {
+      :root {
+        --gap: 20px;
+        --row-h: 290px;
+        --section-pad: 70px
+      }
+
+      .section-head {
+        margin-bottom: 44px
+      }
+
+      .beaches_showcase {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+
+      .beaches_district_card:first-child {
+        grid-column: span 2;
+        grid-row: span 1
+      }
+
+      .beaches_district_card:last-child:nth-child(2n+1):not(:first-child) {
+        grid-column: 1/-1
+      }
+
+      .beaches_explore_stage {
+        height: 52vh;
+        min-height: 220px
+      }
+
+      .beaches_explore_info {
+        padding: 26px 80px 22px 26px
+      }
+
+      .beaches_explore_overlay {
+        padding: 0;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none
+      }
+
+      .beaches_explore_modal {
+        max-width: 90%;
+        height: 60%;
+        border-radius: 15px;
+      }
+    }
+
+    /* Tablet portrait ≤767 : slideshow goes full-screen */
+    @media (max-width:767.98px) {
+      :root {
+        --gap: 18px;
+        --row-h: 260px;
+        --section-pad: 56px
+      }
+
+      .section-head {
+        margin-bottom: 36px
+      }
+
+      .beaches_explore_overlay {
+        padding: 0;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none
+      }
+
+      .beaches_explore_modal {
+        max-width: 90%;
+        height: 60%;
+        border-radius: 15px;
+      }
+
+      .beaches_explore_stage {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        flex: 1 1 auto
+      }
+
+      .beaches_explore_close {
+        top: calc(14px + env(safe-area-inset-top))
+      }
+
+      .beaches_explore_district_tag {
+        top: calc(14px + env(safe-area-inset-top))
+      }
+
+      .beaches_explore_counter {
+        top: calc(24px + env(safe-area-inset-top))
+      }
+
+      .beaches_explore_info {
+        padding: 22px 18px 18px
+      }
+
+      .beaches_explore_nav {
+        width: 40px;
+        height: 40px
+      }
+
+      .beaches_explore_prev {
+        left: 10px
+      }
+
+      .beaches_explore_next {
+        right: 10px
+      }
+    }
+
+    /* Phones ≤575 : single column */
+    @media (max-width:575.98px) {
+      :root {
+        --gap: 16px;
+        --row-h: 240px;
+        --section-pad: 48px
+      }
+
+      .beaches_showcase {
+        grid-template-columns: 1fr
+      }
+
+      .beaches_district_card:first-child,
+      .beaches_district_card:last-child:nth-child(2n+1) {
+        grid-column: auto
+      }
+
+      .beaches_district_card {
+        border-radius: 22px
+      }
+
+      .beaches_card_body {
+        margin: 8px;
+        padding: 16px 18px
+      }
+
+      .beaches_card_title {
+        font-size: 1.1rem
+      }
+
+      .beaches_card_names {
+        font-size: .8rem;
+        margin-bottom: 12px
+      }
+
+      .beaches_card_btn {
+        padding: 8px 16px;
+        font-size: .78rem
+      }
+
+      .beaches_card_count {
+        top: 14px;
+        right: 14px
+      }
+
+      .home_section_eyebrow {
+        font-size: .7rem;
+        letter-spacing: 2px
+      }
+
+      .beaches_description {
+        font-size: .92rem;
+        line-height: 1.7;
+        padding: 0 6px
+      }
+
+      .beaches_explore_beach_desc {
+        font-size: .85rem;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden
+      }
+
+      .beaches_explore_meta_row {
+        font-size: .74rem;
+        gap: 6px 12px
+      }
+
+      .beaches_explore_thumbrow {
+        padding: 10px 14px;
+        gap: 8px
+      }
+
+      .beaches_explore_thumb {
+        width: 72px;
+        height: 50px
+      }
+
+      .beaches_explore_district_tag {
+        font-size: .68rem;
+        letter-spacing: 1px;
+        padding: 6px 12px
+      }
+    }
+
+    /* Small phones ≤380 */
+    @media (max-width:380px) {
+      :root {
+        --row-h: 220px
+      }
+
+      .beaches_card_body {
+        padding: 12px 14px
+      }
+
+      .beaches_card_pin {
+        font-size: .66rem;
+        letter-spacing: 1.5px
+      }
+
+      .beaches_explore_nav {
+        width: 34px;
+        height: 34px
+      }
+
+      .beaches_explore_info {
+        padding: 18px 14px 14px
+      }
+
+      .beaches_explore_counter {
+        display: none
+      }
+    }
+
+    /* Landscape phones (short height) */
+    @media (max-height:480px) and (orientation:landscape) {
+      .beaches_explore_overlay {
+        padding: 0
+      }
+
+      .beaches_explore_modal {
+        height: 100%;
+        max-height: none;
+        border-radius: 0
+      }
+
+      .beaches_explore_stage {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        flex: 1 1 auto
+      }
+
+      .beaches_explore_info {
+        padding: 14px 70px 10px 20px
+      }
+
+      .beaches_explore_beach_desc {
+        display: none
+      }
+
+      .beaches_explore_thumbrow {
+        padding: 6px 14px
+      }
+
+      .beaches_explore_thumb {
+        width: 60px;
+        height: 40px
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important
+      }
+
+      .beaches_district_card:hover .beaches_card_img {
+        transform: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="beaches_section" id="beaches">
+    <div class="beaches_bg_shapes" aria-hidden="true">
+      <span class="beaches_shape beaches_shape_1"></span>
+      <span class="beaches_shape beaches_shape_2"></span>
+      <span class="beaches_shape beaches_shape_3"></span>
+    </div>
+
+    <div class="container beaches_container">
+      <div class="row justify-content-center text-center section-head">
+        <div class="col-lg-8">
+          <span class="home_section_eyebrow">TAMIL NADU COASTLINE</span>
+          <h2 class="home_section_title">Tamil Nadu Beaches</h2>
+          <span class="home_section_title_divider" aria-hidden="true"></span>
+          <p class="home_section_subtitle">Where golden shores meet the endless blue.</p>
+          <p class="beaches_description">
+            Discover the beautiful coastline of Tamil Nadu — from peaceful sunrise shores
+            and golden sunsets to vibrant coastal towns and unforgettable sea views.
+          </p>
+        </div>
+      </div>
+      <div class="beaches_showcase" id="beachesShowcase"></div>
+    </div>
+
+    <div class="beaches_explore_overlay" id="beachesExploreOverlay" aria-hidden="true">
+      <div class="beaches_explore_modal" role="dialog" aria-modal="true" aria-label="Beach slideshow">
+        <div class="beaches_explore_stage" id="beachesExploreStage">
+          <div id="beachesExploreTrack"></div>
+          <span class="beaches_explore_district_tag" id="beachesExploreDistrictTag">📍 Chennai</span>
+          <span class="beaches_explore_counter" id="beachesExploreCounter">01 / 02</span>
+
+          <button class="beaches_explore_close" id="beachesExploreClose" type="button" aria-label="Close slideshow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </button>
+          <button class="beaches_explore_nav beaches_explore_prev" id="beachesExplorePrev" type="button"
+            aria-label="Previous beach">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button class="beaches_explore_nav beaches_explore_next" id="beachesExploreNext" type="button"
+            aria-label="Next beach">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+
+          <div class="beaches_explore_info">
+            <h3 class="beaches_explore_beach_name" id="beachesExploreBeachName"></h3>
+            <p class="beaches_explore_beach_desc" id="beachesExploreBeachDesc"></p>
+            <div class="beaches_explore_meta_row" id="beachesExploreMetaRow"></div>
+          </div>
+        </div>
+        <div class="beaches_explore_thumbrow" id="beachesExploreThumbrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+
+    const beachesData = [
+      {
+        district: "Chennai", name: "Marina Beach", image: "assets/image/beaches/chennai-marina-beach.jpg",
+        description: "One of the world's longest urban beaches, alive with sunrise walks, street food and sea breeze.",
+        experience: "Coastal Boulevard", bestTime: "Sunrise & Evening", suitedFor: "Family Friendly"
+      },
+      {
+        district: "Chennai", name: "Elliot's Beach (Besant Nagar)", image: "assets/image/beaches/chennai-besant-nagar.jpeg",
+        description: "A calmer, laid-back shoreline popular for quiet evenings and beachside cafes.",
+        experience: "Relaxed Shoreline", bestTime: "Evening", suitedFor: "Couples & Friends"
+      },
+      {
+        district: "Chengalpattu", name: "Covelong Beach", image: "assets/image/beaches/chengalpattu-kovalam-beach.jpg",
+        description: "A fishing-village beach turned surf hub, known for its laid-back coastal charm.",
+        experience: "Surf & Fishing Village", bestTime: "Morning", suitedFor: "Adventure Seekers"
+      },
+      {
+        district: "Chengalpattu", name: "Mahabalipuram Beach", image: "assets/image/beaches/chennai-Mahabalipuram-beach.jpg",
+        description: "Golden sands beside ancient rock-cut shore temples and centuries of coastal heritage.",
+        experience: "Heritage Coastline", bestTime: "Sunset", suitedFor: "Culture Lovers"
+      },
+      {
+        district: "Cuddalore", name: "Silver Beach", image: "assets/image/beaches/cuddalore-beach.jpg",
+        description: "One of the widest beaches in India, with soft shimmering sands and gentle waves.",
+        experience: "Wide Open Sands", bestTime: "Evening", suitedFor: "Family Friendly"
+      },
+      {
+        district: "Nagapattinam", name: "Velankanni Beach", image: "assets/image/beaches/nagapattinam-velankanni-beach.webp",
+        description: "A peaceful pilgrim-town shore where devotion meets a tranquil sea view.",
+        experience: "Pilgrim Coastal Town", bestTime: "Morning", suitedFor: "Peaceful Retreat"
+      },
+      {
+        district: "Nagapattinam", name: "Nagore Beach", image: "assets/image/beaches/nagapattinam-Nagore-beach.jpg",
+        description: "A quiet shoreline beside the historic Nagore Dargah, calm and steeped in local culture.",
+        experience: "Cultural Shoreline", bestTime: "Morning", suitedFor: "Quiet Reflection"
+      },
+      {
+        district: "Kanniyakumari", name: "Kanyakumari Beach", image: "assets/image/beaches/kanyakumari-beach.jpeg",
+        description: "Where three seas meet — famous for spectacular sunrises and sunsets over open water.",
+        experience: "Confluence of Seas", bestTime: "Sunrise & Sunset", suitedFor: "Every Traveller"
+      },
+      {
+        district: "Kanniyakumari", name: "Sanguthurai Beach", image: "assets/image/beaches/kanyakumari-sanguthurai-beach.jpg",
+        description: "A quieter shoreline near Kanyakumari town, calm and less crowded.",
+        experience: "Quiet Coastal Corner", bestTime: "Evening", suitedFor: "Peaceful Retreat"
+      },
+      {
+        district: "Ramanathapuram", name: "Dhanushkodi Beach", image: "assets/image/beaches/ramanathapuram-dhanushkodi.jpg",
+        description: "A hauntingly beautiful ghost-town shoreline where land narrows into the sea.",
+        experience: "Remote Ghost Town", bestTime: "Morning", suitedFor: "Explorers"
+      },
+      {
+        district: "Ramanathapuram", name: "Ariyaman Beach", image: "assets/image/beaches/ramanathapuram-Ariyaman-Beach.jpg",
+        description: "A calm, clean stretch of sand near Rameswaram, popular for peaceful beach camps.",
+        experience: "Peaceful Camp Shore", bestTime: "Evening", suitedFor: "Family Friendly"
+      },
+      {
+        district: "Thoothukudi", name: "Manapad Beach", image: "assets/image/beaches/thoothukudi-manapad-beach.jpg",
+        description: "A historic fishing-hamlet coastline with rocky outcrops and a centuries-old church.",
+        experience: "Historic Fishing Hamlet", bestTime: "Morning", suitedFor: "Culture Lovers"
+      },
+      {
+        district: "Thoothukudi", name: "Hare Island Beach", image: "assets/image/beaches/thoothukudi-hare-island-beach.jpeg",
+        description: "A tranquil coral-fringed island shore known for calm waters and marine life.",
+        experience: "Coral Island Shore", bestTime: "Morning", suitedFor: "Nature Lovers"
+      }
+    ];
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const $ = id => document.getElementById(id);
+      const showcase = $("beachesShowcase"), overlay = $("beachesExploreOverlay"), stage = $("beachesExploreStage"),
+        track = $("beachesExploreTrack"), districtTag = $("beachesExploreDistrictTag"), counterEl = $("beachesExploreCounter"),
+        nameEl = $("beachesExploreBeachName"), descEl = $("beachesExploreBeachDesc"), metaRow = $("beachesExploreMetaRow"),
+        thumbrow = $("beachesExploreThumbrow"), closeBtn = $("beachesExploreClose"),
+        prevBtn = $("beachesExplorePrev"), nextBtn = $("beachesExploreNext");
+      if (!showcase) return;
+
+
+
+      const isTouch = window.matchMedia("(hover: none)");
+      const isPhone = window.matchMedia("(max-width: 575.98px)");
+
+      function updateLayout() {
+        // hide the prev/next arrows on phones (swipe is used instead)
+        prevBtn.style.display = nextBtn.style.display = isPhone.matches ? "none" : "";
+      }
+
+
+
+      updateLayout();
+      isPhone.addEventListener("change", updateLayout);
+
+      const districts = [], byDistrict = {};
+      beachesData.forEach(b => {
+        if (!byDistrict[b.district]) {byDistrict[b.district] = []; districts.push(b.district);}
+        byDistrict[b.district].push(b);
+      });
+
+      let activeBeaches = [], activeIndex = 0, lastFocused = null;
+
+      districts.forEach(district => {
+        const beaches = byDistrict[district], cover = beaches[0];
+        const card = document.createElement("div");
+        card.className = "beaches_district_card";
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", "Explore beaches in " + district);
+        card.innerHTML =
+          '<img class="beaches_card_img" src="' + cover.image + '" alt="' + district + ' beaches" loading="lazy">' +
+          '<div class="beaches_card_overlay"></div>' +
+          '<span class="beaches_card_count">' + beaches.length + (beaches.length > 1 ? " Beaches" : " Beach") + '</span>' +
+          '<div class="beaches_card_body">' +
+          '<span class="beaches_card_pin">📍 ' + district + '</span>' +
+          '<h3 class="beaches_card_title">' + district + '</h3>' +
+          '<p class="beaches_card_names">' + beaches.map(b => b.name).join(" · ") + '</p>' +
+          '<span class="beaches_card_btn">Explore ' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '</span>' +
+          '</div>';
+        card.addEventListener("click", () => openExplore(district, card));
+        card.addEventListener("keydown", e => {
+          if (e.key === "Enter" || e.key === " ") {e.preventDefault(); openExplore(district, card);}
+        });
+        showcase.appendChild(card);
+      });
+
+      function openExplore(district, trigger) {
+        lastFocused = trigger || null;
+        activeBeaches = byDistrict[district];
+        activeIndex = 0;
+        districtTag.textContent = "📍 " + district;
+
+        track.innerHTML = activeBeaches.map((b, i) =>
+          '<div class="beaches_explore_slide' + (i === 0 ? " beaches_explore_slide_active" : "") + '">' +
+          '<img src="' + b.image + '" alt="' + b.name + ', ' + b.district + '">' +
+          '<div class="beaches_explore_slide_overlay"></div></div>').join("");
+
+        thumbrow.innerHTML = activeBeaches.map((b, i) =>
+          '<div class="beaches_explore_thumb' + (i === 0 ? " beaches_explore_thumb_active" : "") + '" data-i="' + i + '" tabindex="0" role="button" aria-label="Show ' + b.name + '">' +
+          '<img src="' + b.image + '" alt="" loading="lazy"></div>').join("");
+
+        thumbrow.querySelectorAll(".beaches_explore_thumb").forEach(t => {
+          const go = () => goToExploreSlide(parseInt(t.dataset.i, 10));
+          t.addEventListener("click", go);
+          t.addEventListener("keydown", e => {if (e.key === "Enter" || e.key === " ") {e.preventDefault(); go();} });
+        });
+
+        const multi = activeBeaches.length > 1;
+        prevBtn.style.display = nextBtn.style.display = multi ? "" : "none";
+        thumbrow.style.display = multi ? "" : "none";
+
+        updateExploreInfo(0);
+        overlay.classList.add("beaches_explore_open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeBtn.focus({preventScroll: true});
+      }
+
+      function closeExplore() {
+        overlay.classList.remove("beaches_explore_open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocused) lastFocused.focus({preventScroll: true});
+      }
+
+      function updateExploreInfo(index) {
+        const b = activeBeaches[index];
+        counterEl.textContent = String(index + 1).padStart(2, "0") + " / " + String(activeBeaches.length).padStart(2, "0");
+        nameEl.textContent = b.name;
+        descEl.textContent = b.description;
+        metaRow.innerHTML = '<span>🌊 ' + b.experience + '</span><span>☀️ ' + b.bestTime + '</span><span>👥 ' + b.suitedFor + '</span>';
+      }
+
+      function goToExploreSlide(index) {
+        if (!activeBeaches.length) return;
+        const n = (index + activeBeaches.length) % activeBeaches.length;
+        if (n === activeIndex) return;
+        const slides = track.querySelectorAll(".beaches_explore_slide");
+        const thumbs = thumbrow.querySelectorAll(".beaches_explore_thumb");
+        slides[activeIndex].classList.remove("beaches_explore_slide_active");
+        thumbs[activeIndex].classList.remove("beaches_explore_thumb_active");
+        activeIndex = n;
+        slides[n].classList.add("beaches_explore_slide_active");
+        thumbs[n].classList.add("beaches_explore_thumb_active");
+        thumbs[n].scrollIntoView({behavior: "smooth", inline: "center", block: "nearest"});
+        updateExploreInfo(n);
+      }
+
+      closeBtn.addEventListener("click", closeExplore);
+      prevBtn.addEventListener("click", () => goToExploreSlide(activeIndex - 1));
+      nextBtn.addEventListener("click", () => goToExploreSlide(activeIndex + 1));
+      overlay.addEventListener("click", e => {if (e.target === overlay) closeExplore();});
+
+      document.addEventListener("keydown", e => {
+        if (!overlay.classList.contains("beaches_explore_open")) return;
+        if (e.key === "Escape") closeExplore();
+        if (e.key === "ArrowRight") goToExploreSlide(activeIndex + 1);
+        if (e.key === "ArrowLeft") goToExploreSlide(activeIndex - 1);
+      });
+
+      let touchStartX = 0;
+      stage.addEventListener("touchstart", e => {touchStartX = e.changedTouches[0].screenX;}, {passive: true});
+      stage.addEventListener("touchend", e => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) < 40) return;
+        goToExploreSlide(activeIndex + (diff > 0 ? 1 : -1));
+      }, {passive: true});
+    });
+  </script>
+</body>
+
+</html>

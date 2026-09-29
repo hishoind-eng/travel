@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Places of Tamil Nadu — Laloo Travel &amp; Tours</title>
+
+    <!-- Bootstrap 5 (used only for container/grid utility helpers) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================================================
+   LALOO TRAVEL & TOURS — TRICHY CHURCH GALLERY
+   ========================================================= */
+        :root {
+            --laloo-orange: #c1601f;
+            --laloo-orange-light: #e08a45;
+            --laloo-orange-deep: #9c4a15;
+            --laloo-gold: #c39a4b;
+            --church-cream: #faf3e8;
+            --church-cream-deep: #f3e6d3;
+            --church-dark: #2a1c12;
+            --church-brown: #5a3d27;
+            --church-muted: #8a7561;
+            --church-white: #ffffff;
+            --church-radius: 22px;
+            --church-shadow: 0 20px 45px -18px rgba(42, 28, 18, 0.28);
+            --church-shadow-soft: 0 10px 30px -14px rgba(42, 28, 18, 0.18);
+        }
+
+        .church_section * {
+            box-sizing: border-box;
+        }
+
+        .church_section {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--church-dark);
+            background:
+                radial-gradient(circle at 12% 18%, rgba(193, 96, 31, 0.10), transparent 42%),
+                radial-gradient(circle at 88% 12%, rgba(195, 154, 75, 0.12), transparent 40%),
+                radial-gradient(circle at 50% 100%, rgba(193, 96, 31, 0.06), transparent 55%),
+                linear-gradient(180deg, var(--church-cream) 0%, var(--church-cream-deep) 100%);
+            padding: 100px 20px 110px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* decorative floating blobs */
+        .church_blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.55;
+            pointer-events: none;
+            z-index: 0;
+            animation: churchFloat 14s ease-in-out infinite;
+        }
+
+        .church_blob-1 {
+            width: 340px;
+            height: 340px;
+            top: -120px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(193, 96, 31, 0.28), transparent 70%);
+            animation-delay: 0s;
+        }
+
+        .church_blob-2 {
+            width: 260px;
+            height: 260px;
+            bottom: -80px;
+            right: -60px;
+            background: radial-gradient(circle, rgba(195, 154, 75, 0.30), transparent 70%);
+            animation-delay: 2.5s;
+        }
+
+        .church_blob-3 {
+            width: 180px;
+            height: 180px;
+            top: 40%;
+            right: 6%;
+            background: radial-gradient(circle, rgba(193, 96, 31, 0.16), transparent 70%);
+            animation-delay: 5s;
+        }
+
+        @keyframes churchFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+
+            50% {
+                transform: translateY(-22px) translateX(14px);
+            }
+        }
+
+        .church_container {
+            max-width: 1320px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------- HEADER ---------- */
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 60px;
+        }
+
+        .church_gallery_label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            color: var(--laloo-orange-deep);
+            background: rgba(193, 96, 31, 0.09);
+            border: 1px solid rgba(193, 96, 31, 0.22);
+            padding: 7px 18px;
+            border-radius: 100px;
+            margin-bottom: 22px;
+        }
+
+        .church_gallery_label i {
+            font-size: 12px;
+            color: var(--laloo-orange);
+        }
+
+        .home_section_title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: clamp(2rem, 4.2vw, 3.15rem);
+            line-height: 1.15;
+            color: var(--church-dark);
+            margin: 0 0 18px;
+        }
+
+        .home_section_title span {
+            font-style: italic;
+            color: var(--laloo-orange);
+        }
+
+        .home_section_subtitle {
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: var(--church-brown);
+            margin: 0;
+        }
+
+        /* ---------- DISTRICT TABS ---------- */
+        .church_district_tabs {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto 46px;
+        }
+
+        .church_district_tab {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 13.5px;
+            color: var(--church-brown);
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(195, 154, 75, 0.4);
+            padding: 9px 20px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .church_district_tab:hover {
+            border-color: var(--laloo-orange);
+            color: var(--laloo-orange-deep);
+        }
+
+        .church_district_tab.active {
+            background: var(--laloo-orange);
+            border-color: var(--laloo-orange);
+            color: #fff;
+            box-shadow: 0 8px 18px -8px rgba(156, 74, 21, 0.55);
+        }
+
+        /* ---------- SLIDER STRUCTURE ---------- */
+        .church_gallery {
+            position: relative;
+        }
+
+        .church_track_wrapper {
+            overflow: hidden;
+            padding: 14px 6px 30px;
+        }
+
+        .church_track {
+            display: flex;
+            gap: 26px;
+            will-change: transform;
+            transition: transform 0.65s cubic-bezier(0.22, 0.72, 0.24, 1);
+        }
+
+        /* ---------- CARD ---------- */
+        .church_card {
+            flex: 0 0 calc((100% - 52px)/3);
+            /* 3 per view desktop, gap 26px */
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(195, 154, 75, 0.35);
+            border-radius: var(--church-radius);
+            overflow: hidden;
+            box-shadow: var(--church-shadow-soft);
+            transition: transform 0.45s cubic-bezier(0.22, 0.72, 0.24, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+            opacity: 0;
+            transform: translateY(26px) scale(0.97);
+        }
+
+        .church_section.is-visible .church_card {
+            animation: churchCardIn 0.75s cubic-bezier(0.22, 0.72, 0.24, 1) forwards;
+        }
+
+        .church_section.is-visible .church_card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .church_section.is-visible .church_card:nth-child(2) {
+            animation-delay: 0.16s;
+        }
+
+        .church_section.is-visible .church_card:nth-child(3) {
+            animation-delay: 0.27s;
+        }
+
+        .church_section.is-visible .church_card:nth-child(4) {
+            animation-delay: 0.38s;
+        }
+
+        .church_section.is-visible .church_card:nth-child(5) {
+            animation-delay: 0.49s;
+        }
+
+        .church_section.is-visible .church_card:nth-child(6) {
+            animation-delay: 0.60s;
+        }
+
+        @keyframes churchCardIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .church_card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--church-shadow);
+            border-color: rgba(193, 96, 31, 0.55);
+        }
+
+        .church_card_image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1.1;
+            overflow: hidden;
+            border-radius: var(--church-radius) var(--church-radius) 0 0;
+        }
+
+        .church_card_image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s ease;
+        }
+
+        .church_card:hover .church_card_image img {
+            transform: scale(1.08);
+        }
+
+        .church_card_image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(42, 28, 18, 0) 45%, rgba(42, 28, 18, 0.62) 100%);
+            pointer-events: none;
+        }
+
+        .church_location {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--church-dark);
+            font-size: 12.5px;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 100px;
+            box-shadow: 0 4px 12px rgba(42, 28, 18, 0.15);
+        }
+
+        .church_location i {
+            color: var(--laloo-orange);
+            font-size: 12px;
+        }
+
+        .church_card_badge {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            z-index: 2;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 13px;
+            opacity: 0.92;
+        }
+
+        .church_card_content {
+            padding: 24px 24px 26px;
+        }
+
+        .church_card_content h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--church-dark);
+            margin: 0 0 8px;
+            line-height: 1.3;
+        }
+
+        .church_card_content h3 i {
+            color: var(--laloo-orange);
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+
+        .church_card_content p {
+            font-size: 0.93rem;
+            line-height: 1.6;
+            color: var(--church-brown);
+            margin: 0 0 14px;
+        }
+
+        .church_details {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--church-muted);
+            padding-top: 14px;
+            border-top: 1px solid rgba(195, 154, 75, 0.3);
+        }
+
+        .church_details i {
+            color: var(--laloo-gold);
+            font-size: 11px;
+        }
+
+        /* ---------- CONTROLS ---------- */
+        .church_controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            margin-top: 14px;
+        }
+
+        .church_arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(193, 96, 31, 0.35);
+            background: var(--church-white);
+            color: var(--laloo-orange-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px -8px rgba(42, 28, 18, 0.25);
+        }
+
+        .church_arrow:hover {
+            background: var(--laloo-orange);
+            border-color: var(--laloo-orange);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .church_arrow:active {
+            transform: translateY(0);
+        }
+
+        .church_dots {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .church_dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(193, 96, 31, 0.28);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.35s ease;
+        }
+
+        .church_dot.active {
+            width: 26px;
+            border-radius: 6px;
+            background: var(--laloo-orange);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width:1200px) {
+            .church_card {
+                flex: 0 0 calc((100% - 52px)/3);
+            }
+        }
+
+        @media (max-width:1024px) {
+            .church_section {
+                padding: 80px 18px 90px;
+            }
+
+            .church_card {
+                flex: 0 0 calc((100% - 26px)/2);
+            }
+        }
+
+        @media (max-width:991px) {
+            .church_card {
+                flex: 0 0 calc((100% - 26px)/2);
+            }
+
+            .church_gallery_header {
+                margin-bottom: 46px;
+            }
+        }
+
+        @media (max-width:768px) {
+            .church_card {
+                flex: 0 0 100%;
+            }
+
+            .church_track {
+                gap: 0;
+            }
+
+            .church_section {
+                padding: 70px 16px 80px;
+            }
+
+            .church_card_content {
+                padding: 20px 20px 22px;
+            }
+        }
+
+        @media (max-width:576px) {
+            .church_gallery_title {
+                font-size: 1.9rem;
+            }
+
+            .church_gallery_subtitle {
+                font-size: 0.96rem;
+            }
+
+            .church_arrow {
+                width: 44px;
+                height: 44px;
+                font-size: 13px;
+            }
+
+            .church_controls {
+                gap: 18px;
+            }
+
+            .church_district_tab {
+                font-size: 12.5px;
+                padding: 8px 16px;
+            }
+
+            .church_district_tabs {
+                gap: 8px;
+                margin-bottom: 34px;
+            }
+        }
+
+        @media (max-width:480px) {
+            .church_section {
+                padding: 60px 14px 70px;
+            }
+
+            .church_gallery_header {
+                margin-bottom: 38px;
+            }
+
+            .church_card_content {
+                padding: 18px 18px 20px;
+            }
+
+            .church_card_content h3 {
+                font-size: 1.15rem;
+            }
+        }
+
+        @media (max-width:425px) {
+            .church_gallery_label {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+
+            .church_track_wrapper {
+                padding: 10px 2px 24px;
+            }
+        }
+
+        @media (max-width:375px) {
+            .church_gallery_title {
+                font-size: 1.65rem;
+            }
+
+            .church_card_content p {
+                font-size: 0.88rem;
+            }
+        }
+
+        @media (max-width:320px) {
+            .church_arrow {
+                width: 40px;
+                height: 40px;
+            }
+
+            .church_gallery_title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width:1400px) {
+            .church_container {
+                max-width: 1360px;
+            }
+        }
+
+        /* reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .church_track {
+                transition: none;
+            }
+
+            .church_card {
+                animation: none !important;
+                opacity: 1;
+                transform: none;
+            }
+
+            .church_blob {
+                animation: none;
+            }
+
+            .church_card_image img {
+                transition: none;
+            }
+        }
+
+        /* focus visibility */
+        .church_arrow:focus-visible,
+        .church_dot:focus-visible {
+            outline: 2px solid var(--laloo-orange-deep);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ CHURCH GALLERY SECTION ============ -->
+    <section class="church_section" id="churchSection">
+        <div class="church_blob church_blob-1"></div>
+        <div class="church_blob church_blob-2"></div>
+        <div class="church_blob church_blob-3"></div>
+        <div class="church_container">
+            <div class="section-header">
+                <span class="church_gallery_label"><i class="fa-solid fa-place-of-worship"></i>Tamil Nadu Church
+                    Trail</span>
+                <h2 class="home_section_title">Sacred Places of <span>Tamil Nadu</span></h2>
+                <p class="home_section_subtitle">Explore historic churches, basilicas and peaceful Christian heritage
+                    destinations across Trichy and neighbouring districts.</p>
+            </div>
+
+            <div class="church_district_tabs" id="churchDistrictTabs" role="tablist"
+                aria-label="Filter churches by district">
+                <button class="church_district_tab active" data-district="trichy" type="button">Trichy</button>
+                <button class="church_district_tab" data-district="thanjavur" type="button">Thanjavur</button>
+                <button class="church_district_tab" data-district="nagapattinam" type="button">Nagapattinam</button>
+                <button class="church_district_tab" data-district="madurai" type="button">Madurai</button>
+                <button class="church_district_tab" data-district="chennai" type="button">chennai</button>
+                <button class="church_district_tab" data-district="kanyakumari" type="button">Kanyakumari</button>
+                <button class="church_district_tab" data-district="Puducherry" type="button">Puducherry</button>
+            </div>
+            <div class="church_gallery" id="churchGallery">
+                <div class="church_track_wrapper">
+                    <div class="church_track" id="churchTrack">
+
+                        <!-- Card 1 : Trichy -->
+                        <div class="church_card" data-district="trichy">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/trichy-St-Lourdes-Church.jpg"
+                                    alt="Our Lady of Lourdes Church, Trichy" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Trichy</span>
+                                <span class="church_card_badge">Est. Heritage Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Our Lady of Lourdes Church</h3>
+                                <p>A serene hilltop shrine known for its peaceful grotto and panoramic views over the
+                                    city, a favourite stop for pilgrims and travellers alike.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Pilgrim Shrine &amp;
+                                    Viewpoint</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="trichy">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/trichy-Holy-Redeemer-Basilica.jpeg"
+                                    alt="Holy Redeemer Basilica, Trichy" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Trichy</span>
+                                <span class="church_card_badge">Minor Basilica</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Holy Redeemer Basilica</h3>
+                                <p>One of the oldest churches in the region, admired for its grand colonial-era
+                                    architecture and richly decorated interiors.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Colonial Architecture
+                                </div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="trichy">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/trichy-St.-Mary's-Cathedral.jpeg"
+                                    alt="St. Mary's Cathedral, Trichy" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Trichy</span>
+                                <span class="church_card_badge">Cathedral</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>St. Mary's Cathedral</h3>
+                                <p>A landmark cathedral within the historic Rock Fort area, valued for its timeless
+                                    facade and calm, prayerful atmosphere.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Near Rock Fort</div>
+                            </div>
+                        </div>
+                        <!-- Card 2 : Thanjavur -->
+                        <div class="church_card" data-district="thanjavur">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/thanjavur-poondi-madha.jpeg"
+                                    alt="Poondi Madha Basilica, Poondi" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Poondi</span>
+                                <span class="church_card_badge">Major Pilgrim Centre</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Poondi Madha Basilica</h3>
+                                <p>A major Marian pilgrimage centre in Thanjavur district, drawing thousands of devotees
+                                    each year to its spacious shrine grounds.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Thanjavur District</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="thanjavur">
+
+
+                            <div class="church_card_image">
+                                <img src="assets/image/church/thanjavur-sacred-heart-church.jpeg"
+                                    alt="Sacred Heart Church, Thanjavur" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Thanjavur</span>
+                                <span class="church_card_badge">Historic Mission Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Schwartz Church</h3>
+                                <p>A historic church within the Thanjavur Palace complex, valued for its old-world charm
+                                    and ties to the region's royal heritage.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Near Thanjavur Palace
+                                </div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="thanjavur">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/thanjavur-adaikala-madha-church.jpeg"
+                                    alt="Our Lady Church, Thanjavur" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Thanjavur</span>
+                                <span class="church_card_badge">Parish Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Sacred Heart Church</h3>
+                                <p>A calm, well-kept parish church in the heart of Thanjavur town, easily combined with
+                                    a visit to the Brihadeeswarar Temple.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Thanjavur Town Centre
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 9 : Nagapattinam -->
+                        <div class="church_card" data-district="nagapattinam">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/nagapattinam-velankanni-church.jpeg"
+                                    alt="Our Lady of Good Health Basilica, Velankanni" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Velankanni</span>
+                                <span class="church_card_badge">National Shrine Basilica</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Our Lady of Good Health Basilica</h3>
+                                <p>One of Tamil Nadu's most visited shrines, drawing pilgrims of every faith to its
+                                    coastal town setting and grand annual festival.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Velankanni, Nagapattinam
+                                    District
+                                </div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="nagapattinam">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/nagapattinam-Morning-star-church.webp"
+                                    alt="Morning Star Church (Our Lady of Vailankanni)" loading="lazy">
+                                <span class="church_location"><i
+                                        class="fa-solid fa-location-dot"></i>Nagapattinam</span>
+                                <span class="church_card_badge">Coastal Parish Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Morning Star Church (Our Lady of Vailankanni)</h3>
+                                <p> Known for its unique pillar-less construction, this modern architectural marvel
+                                    offers a very peaceful, expansive space for prayer and quiet reflection away from
+                                    the busier main basilica crowds</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Velankanni, Nagapattinam
+                                    District</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="nagapattinam">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/nagapattinam-Our-Lady-of-Madharasi-Church.jpg"
+                                    alt="Our Lady of Madharasi Church" loading="lazy">
+                                <span class="church_location"><i
+                                        class="fa-solid fa-location-dot"></i>Nagapattinam</span>
+                                <span class="church_card_badge">Coastal Parish Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Our Lady of Madharasi Church</h3>
+                                <p>Originally built by the Portuguese in the 16th century, this historic church stands
+                                    as a nearly five-century-old monument of faith. It is famous for its heritage and a
+                                    deeply revered local tradition surrounding the miraculous history of the Madharasi
+                                    Madha statue.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Beach Road, Velippalayam,
+                                    Nagapattinam</div>
+                            </div>
+                        </div>
+                        <!-- Card 11 : Madurai -->
+                        <div class="church_card" data-district="madurai">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/madhurai-st.mary's-church.jpg"
+                                    alt="Our Lady of Dolours Cathedral, Madurai" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Madurai</span>
+                                <span class="church_card_badge">Cathedral</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Our Lady of Dolours Cathedral</h3>
+                                <p>A striking Gothic-style cathedral in Madurai city, known for its twin spires and a
+                                    peaceful contrast to the bustling streets nearby.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Madurai City Centre</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="madurai">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/madurai-csi-cathedral-100kb.jpg"
+                                    alt=" CSI Cathedral Madurai" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Madurai</span>
+                                <span class="church_card_badge">Cathedral</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i> CSI Cathedral Madurai</h3>
+                                <p>Dedicated in March 1986, this massive structure is noted as one of the largest
+                                    cathedrals in the region, built with a unique fish-shaped architectural layout
+                                    reflecting local culture alongside classic Gothic design elements.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Madurai City Centre</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="madurai">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/madurai-st.joseph's-church.jpg" alt="St. Joseph's Church"
+                                    loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Madurai</span>
+                                <span class="church_card_badge">Heritage Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>St. Joseph's Church</h3>
+                                <p> Known as a peaceful neighborhood parish with deep local roots and a comfortable
+                                    environment for family milestones and regular community worship..</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i> AA Road, Old Arppalayam,
+                                    West Ponnagaram, Arappalayam, Madurai, Tamil Nadu 625016
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 12 : chennai -->
+                        <div class="church_card" data-district="chennai">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/chennai-St.thomas-mount.jpg"
+                                    alt=" St. Thomas Mount National Shrine" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Chennai</span>
+                                <span class="church_card_badge">Cathedral</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i> St. Thomas Mount National Shrine</h3>
+                                <p> Located on a hilltop where St. Thomas is believed to have been martyred. It draws
+                                    pilgrims and travelers from all over the world</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Chennai City Centre</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="chennai">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/chennai-santhom-church.jpg"
+                                    alt=" Santhome Cathedral Basilica" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Chennai</span>
+                                <span class="church_card_badge">Heritage Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i> Santhome Cathedral Basilica</h3>
+                                <p> Built over the tomb of St. Thomas, the apostle of Jesus Christ. It is one of only
+                                    three known churches in the world built over an apostle's tomb from the apostolic
+                                    age.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i> Santhome, Mylapore
+                                </div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="chennai">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/chennai-st.marys-church.jpg" alt="St. Mary's Church"
+                                    loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Chennai</span>
+                                <span class="church_card_badge">Heritage Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i> St. Mary's Church</h3>
+                                <p> The oldest Anglican church east of Suez and the oldest surviving British building in
+                                    India, consecrated in 1680.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i> Fort St. George
+                                </div>
+                            </div>
+                        </div>
+                        <!---Card 13 : kanyakumary -->
+                        <div class="church_card" data-district="kanyakumari">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/kanyakumary-Our-lady-of-ransom-church.jpg"
+                                    alt="Our Lady of Ransom Church" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Kanyakumari</span>
+                                <span class="church_card_badge">Cathedral</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Our Lady of Ransom Church</h3>
+                                <p>This stunning Gothic Revival Catholic church sits near the seashore and is famous for
+                                    its pure white facade, soaring central tower topped with a massive golden cross, and
+                                    12 towers representing the 12 disciples.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Church Road,
+                                    Vivekanandapuram, Kanyakumari</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="kanyakumari">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/kanyakumary-St.antonys-church.jpg"
+                                    alt="St.Anotony's church,kanyakumary" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Kanyakumari</span>
+                                <span class="church_card_badge">Cathedral</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>St.Antony's church</h3>
+                                <p>A striking Gothic-style cathedral in Madurai city, known for its twin spires and a
+                                    peaceful contrast to the bustling streets nearby.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Kadaiyapattinam</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="kanyakumari">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/kanyakumari-St.francis-xavier-church.jpeg"
+                                    alt="St. Francis Xavier" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Kanyakumari</span>
+                                <span class="church_card_badge">Heritage Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>St. Francis Xavier</h3>
+                                <p>This ancient shrine has a history deeply tied to St. Francis Xavier, who preached
+                                    here in the 16th century. It is renowned for its miraculous reputation and historic
+                                    local heritage</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Kottar, Nagercoil (on the
+                                    main route toward Kanyakumari)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 14 : puducherry -->
+                        <div class="church_card" data-district="Puducherry">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/puducherry-Sacred-Heart-of-Jesus.jpg"
+                                    alt="Basilica of the Sacred Heart of Jesus" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>Puducherry</span>
+                                <span class="church_card_badge">Cathedral</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Basilica of the Sacred Heart of Jesus</h3>
+                                <p>Gothic Revival architecture featuring rare stained glass panels that depict events
+                                    from the life of Christ and various saints. It is one of the most iconic religious
+                                    landmarks in the region.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>South Boulevard,
+                                    Puducherry</div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="Puducherry">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/puducherry-eglise-de-notre-dame-des-anges.jpeg"
+                                    alt=" Eglise de Notre Dame des Anges (Our Lady of Angels Church)" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>puducherry</span>
+                                <span class="church_card_badge">Heritage Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i>Eglise de Notre Dame des Anges (Our Lady of Angels
+                                    Church)</h3>
+                                <p>Greco-Roman architectural style and a striking pink-and-white exterior.
+                                    Also known as the White Chapel, it is unique for conducting regular masses in three
+                                    languages: French, English, and Tamil.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Dumas Street, White Town
+                                </div>
+                            </div>
+                        </div>
+                        <div class="church_card" data-district="Puducherry">
+                            <div class="church_card_image">
+                                <img src="assets/image/church/puducherry-Immaculate-Conception-cathedral.jpg"
+                                    alt=" Immaculate Conception Cathedral" loading="lazy">
+                                <span class="church_location"><i class="fa-solid fa-location-dot"></i>puducherry</span>
+                                <span class="church_card_badge">Heritage Church</span>
+                            </div>
+                            <div class="church_card_content">
+                                <h3><i class="fa-solid fa-church"></i> Immaculate Conception Cathedral</h3>
+                                <p>Locally known as Samba Kovil, this 300-year-old mother church serves as the cathedral
+                                    for the Roman Catholic Archdiocese of Pondicherry and Cuddalore.
+                                    It features an impressive blend of French and Portuguese architectural elements with
+                                    a majestic facade.</p>
+                                <div class="church_details"><i class="fa-solid fa-compass"></i>Mission Street
+                                </div>
+                            </div>
+                        </div>
+                        <div class="church_controls">
+
+
+                            <button class="church_arrow" id="churchPrev" aria-label="Previous church"><i
+                                    class="fa-solid fa-chevron-left"></i></button>
+                            <div class="church_dots" id="churchDots"></div>
+                            <button class="church_arrow" id="churchNext" aria-label="Next church"><i
+                                    class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    <script>
+
+
+
+        (function () {
+            const section = document.getElementById('churchSection');
+            const gallery = document.getElementById('churchGallery');
+            const track = document.getElementById('churchTrack');
+            const allCards = Array.from(track.children);
+            const dotsWrap = document.getElementById('churchDots');
+            const prevBtn = document.getElementById('churchPrev');
+            const nextBtn = document.getElementById('churchNext');
+            const tabsWrap = document.getElementById('churchDistrictTabs');
+            const tabs = tabsWrap ? Array.from(tabsWrap.children) : [];
+
+            let currentDistrict = tabs.length ? tabs[0].dataset.district : null;
+            let activeCards = [];
+            let perView = getPerView();
+            let index = 0;
+            let autoTimer = null;
+            const AUTO_DELAY = 4500;
+
+            function getPerView() {
+                const w = window.innerWidth;
+                if (w <= 768) return 1;
+                if (w <= 991) return 2;
+                return 3;
+            }
+
+            function maxIndex() {
+                return Math.max(0, activeCards.length - perView);
+            }
+
+            function applyDistrictFilter() {
+                activeCards = allCards.filter(card => !currentDistrict || card.dataset.district === currentDistrict);
+                allCards.forEach(card => {
+                    card.style.display = activeCards.includes(card) ? '' : 'none';
+                });
+                // keep active cards in visual document order within the track
+                activeCards.forEach(card => track.appendChild(card));
+            }
+
+            function buildDots() {
+                dotsWrap.innerHTML = '';
+                const dotCount = maxIndex() + 1;
+                for (let i = 0; i < dotCount; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'church_dot' + (i === index ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                    dot.addEventListener('click', () => { goTo(i); restartAuto(); });
+                    dotsWrap.appendChild(dot);
+                }
+            }
+
+            function updateDots() {
+                Array.from(dotsWrap.children).forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            }
+
+            function cardWidthWithGap() {
+                if (!activeCards.length) return 0;
+                const card = activeCards[0];
+                const rect = card.getBoundingClientRect();
+                const gap = parseFloat(getComputedStyle(track).gap) || 0;
+                return rect.width + gap;
+            }
+
+            function render() {
+                const offset = cardWidthWithGap() * index;
+                track.style.transform = 'translateX(-' + offset + 'px)';
+                updateDots();
+            }
+
+            function goTo(i) {
+                index = Math.min(Math.max(i, 0), maxIndex());
+                render();
+            }
+
+            function next() {
+                index = index >= maxIndex() ? 0 : index + 1;
+                render();
+            }
+
+            function prev() {
+                index = index <= 0 ? maxIndex() : index - 1;
+                render();
+            }
+
+            function startAuto() {
+                stopAuto();
+                autoTimer = setInterval(next, AUTO_DELAY);
+            }
+            function stopAuto() {
+                if (autoTimer) clearInterval(autoTimer);
+            }
+            function restartAuto() {
+                startAuto();
+            }
+
+            function switchDistrict(district, tabEl) {
+                if (district === currentDistrict) return;
+                currentDistrict = district;
+                tabs.forEach(t => t.classList.toggle('active', t === tabEl));
+                index = 0;
+                applyDistrictFilter();
+                buildDots();
+                render();
+                // retrigger entrance animation for the newly filtered cards
+                section.classList.remove('is-visible');
+                void section.offsetWidth; // force reflow
+                section.classList.add('is-visible');
+                restartAuto();
+            }
+
+            // district tab clicks
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => switchDistrict(tab.dataset.district, tab));
+            });
+
+            // controls
+            nextBtn.addEventListener('click', () => { next(); restartAuto(); });
+            prevBtn.addEventListener('click', () => { prev(); restartAuto(); });
+
+            // pause on hover
+            gallery.addEventListener('mouseenter', stopAuto);
+            gallery.addEventListener('mouseleave', startAuto);
+
+            // touch / swipe support
+            let touchStartX = 0;
+            let touchDeltaX = 0;
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                stopAuto();
+            }, { passive: true });
+
+            track.addEventListener('touchmove', (e) => {
+                touchDeltaX = e.touches[0].clientX - touchStartX;
+            }, { passive: true });
+
+            track.addEventListener('touchend', () => {
+                if (touchDeltaX > 45) prev();
+                else if (touchDeltaX < -45) next();
+                touchDeltaX = 0;
+                startAuto();
+            });
+
+            // resize handling
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    const newPerView = getPerView();
+                    if (newPerView !== perView) {
+                        perView = newPerView;
+                        index = Math.min(index, maxIndex());
+                        buildDots();
+                    }
+                    render();
+                }, 150);
+            });
+
+            // entrance animation on scroll into view
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            section.classList.add('is-visible');
+                            observer.disconnect();
+                        }
+                    });
+                }, { threshold: 0.2 });
+                observer.observe(section);
+            } else {
+                section.classList.add('is-visible');
+            }
+
+            // init
+            applyDistrictFilter();
+            buildDots();
+            render();
+            startAuto();
+        })();
+    </script>
+</body>
+
+</html>

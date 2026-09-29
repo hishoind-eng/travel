@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hill Stations of Tamil Nadu</title>
+    <meta name="description"
+        content="A photo gallery of Tamil Nadu's hill stations — mountains, tea plantations, waterfalls, forests, temples and sunrises.">
+    <meta name="keywords" content="Tamil Nadu photos, Tamil Nadu hill station gallery, Ooty photos, Kodaikanal photos">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --orange-700: #c2540d;
+            --orange-600: #e36414;
+            --orange-500: #f0812e;
+            --orange-100: #fdecd8;
+            --orange-050: #fbf7f0;
+            --cream: #fbf7f0;
+            --white: #ffffff;
+            --charcoal: #211d1a;
+            --charcoal-soft: #3a332d;
+            --moss: #4b5d45;
+            --moss-dark: #374229;
+            --text-muted: #6b645d;
+            --border-soft: #e8e0d6;
+
+            --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+            --font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+            --radius-lg: 22px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+
+            --shadow-soft: 0 20px 45px -20px rgba(33, 29, 26, .28);
+            --shadow-tight: 0 8px 20px -10px rgba(33, 29, 26, .25);
+
+            --container-max: 1280px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .001ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        ::selection {
+            background: var(--orange-100);
+            color: var(--orange-700);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--charcoal);
+            margin: 0;
+        }
+
+        .container-xl {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 64px 24px;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 36px;
+        }
+
+        .home_section_title {
+            font-size: clamp(2rem, 3.4vw, 2.9rem);
+            line-height: 1.12;
+            margin-top: .6rem;
+        }
+
+        .home_section_subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-top: .9rem;
+        }
+
+        .home_section_eyebrow {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: .78rem;
+            letter-spacing: .16em;
+            color: var(--orange-600);
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            margin: 0;
+        }
+
+        .home_section_eyebrow::before {
+            content: "";
+            width: 26px;
+            height: 2px;
+            background: var(--orange-600);
+            display: inline-block;
+        }
+
+        .btn-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .btn-section button {
+            border: 1.5px solid var(--border-soft);
+            background: var(--white);
+            color: var(--charcoal-soft);
+            padding: .55rem 1.3rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: .85rem;
+            transition: all .25s ease;
+            cursor: pointer;
+        }
+
+        .btn-section button.active,
+        .btn-section button:hover {
+            background: var(--orange-600);
+            color: #fff;
+            border-color: var(--orange-600);
+        }
+
+        /* ---------- Station panels (one per hill station, tabbed by filter) ---------- */
+        .station-panel {
+            display: none;
+        }
+
+        .station-panel.active-panel {
+            display: block;
+            animation: fadeIn .35s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .station-intro {
+            max-width: 760px;
+            margin: 0 auto 28px;
+        }
+
+        .station-intro h3 {
+            font-size: clamp(1.5rem, 2.4vw, 2rem);
+            margin-bottom: 12px;
+        }
+
+        .station-intro>p {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .station-highlights-label {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: .82rem;
+            letter-spacing: .04em;
+            color: var(--orange-700);
+            margin-bottom: 10px;
+        }
+
+        .station-highlights {
+            list-style: none;
+            margin: 0 0 28px;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 18px;
+        }
+
+        .station-highlights li {
+            font-size: .92rem;
+            color: var(--charcoal-soft);
+        }
+
+        /* Each station's own image gallery — a simple 2-column grid, not masonry */
+        .station-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .station-gallery .g-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow-tight);
+        }
+
+        .station-gallery .g-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s ease;
+        }
+
+        .station-gallery .g-item .g-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(20, 16, 13, .75), rgba(20, 16, 13, 0) 55%);
+            opacity: 0;
+            transition: opacity .3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+
+        .station-gallery .g-item:hover .g-overlay {
+            opacity: 1;
+        }
+
+        .station-gallery .g-item:hover img {
+            transform: scale(1.07);
+        }
+
+        .station-gallery .g-item .g-cap {
+            color: #fff;
+            font-weight: 700;
+            font-size: .85rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--orange-600);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all .25s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ---------- Responsive breakpoints ---------- */
+        @media (max-width: 991.98px) {
+            .container-xl {
+                padding: 48px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .station-gallery {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .station-gallery .g-item img {
+                height: 240px;
+            }
+
+            .station-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-section {
+                gap: 8px;
+                margin-bottom: 24px;
+            }
+
+            .btn-section button {
+                padding: .45rem 1rem;
+                font-size: .78rem;
+            }
+
+            .home_section_subtitle {
+                font-size: .95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container-xl {
+                padding: 36px 16px;
+            }
+
+            .home_section_title {
+                font-size: 1.6rem;
+            }
+
+            .back-to-top {
+                right: 14px;
+                bottom: 14px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="section">
+        <div class="container-xl">
+            <div class="section-head">
+                <p class="home_section_eyebrow">Hill stations</p>
+                <h2 class="home_section_title">Explore the Hills of Tamil Nadu</h2>
+                <p class="home_section_subtitle">Escape the busy city life and discover the refreshing beauty of
+                    Tamil Nadu's hill stations. From mist-covered mountains and lush tea estates to peaceful lakes,
+                    waterfalls and breathtaking viewpoints, every hill destination offers a unique travel
+                    experience.</p>
+            </div>
+
+            <div class="btn-section reveal">
+                <button class="active" data-filter="ooty">Ooty</button>
+                <button data-filter="kodaikanal">Kodaikanal</button>
+                <button data-filter="yercaud">Yercaud</button>
+                <button data-filter="yelagiri">Yelagiri</button>
+                <button data-filter="coonoor">Coonoor</button>
+                <button data-filter="valparai">Valparai</button>
+                <button data-filter="kotagiri">Kotagiri</button>
+                <button data-filter="kolli-hills">Kolli Hills</button>
+                <button data-filter="meghamalai">Meghamalai</button>
+                
+                <button data-filter="manjolai">Manjolai</button>
+                <button data-filter="velliangiri">Velliangiri Hills</button>
+                <button data-filter="kollukkumalai">Kollukkumalai</button>
+            </div>
+
+            <!-- ===== Ooty ===== -->
+            <div class="station-panel active-panel" data-category="ooty">
+                <div class="station-intro">
+                    <h3>🌿 Ooty – The Queen of Hill Stations</h3>
+                    <p>Experience the charm of the Nilgiris with beautiful tea gardens, misty mountains, scenic
+                        viewpoints and the famous Nilgiri Mountain Railway. Ooty is perfect for families, couples
+                        and nature lovers.</p>
+                    <p class="station-highlights-label">🍵 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🌅 Famous sunrise views</li>
+                        <li>🍃 Vast tea plantations</li>
+                        <li>☁️ Clouds and mist-covered valleys</li>
+                        <li>🏔️ Panoramic Western Ghats scenery</li>
+                        <li>🚂 Nilgiri Mountain Railway toy train</li>
+                        <li>☕ Tea tasting at a factory</li>
+                        <li>📸 Excellent photography spots</li>
+                        <li>🥾 Trekking and nature walks</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/Ooty-payakara.jpeg" alt="Misty Nilgiri mountains near Ooty">
+                        <div class="g-overlay"><span class="g-cap">Ooty · Ooty-payakara</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/teaestate.jpg"
+                            alt="Tea gardens rolling through the Nilgiri hills">
+                        <div class="g-overlay"><span class="g-cap">Ooty · Tea Gardens</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/ooty-lake.jpg"
+                            alt="Tea gardens rolling through the Nilgiri hills">
+                        <div class="g-overlay"><span class="g-cap">Ooty · Ooty lake</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/Ooty-doddabeta.jpg"
+                            alt="Tea gardens rolling through the Nilgiri hills">
+                        <div class="g-overlay"><span class="g-cap">Ooty · Doddabetta</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/Ooty-botanical.jpeg"
+                            alt="Tea gardens rolling through the Nilgiri hills">
+                        <div class="g-overlay"><span class="g-cap">Ooty · botanical gardern</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Kodaikanal ===== -->
+            <div class="station-panel" data-category="kodaikanal">
+                <div class="station-intro">
+                    <h3>🌲 Kodaikanal – The Princess of Hill Stations</h3>
+                    <p>Set around a star-shaped lake and wrapped in pine and eucalyptus forests, Kodaikanal is
+                        known for its cooler climate, dramatic viewpoints and a slower, more laid-back pace than
+                        the Nilgiris.</p>
+                    <p class="station-highlights-label">🌸 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🚣 Boating on Kodaikanal Lake</li>
+                        <li>🌲 Pine and eucalyptus forest walks</li>
+                        <li>🪨 Pillar Rocks viewpoint</li>
+                        <li>🚶 Coaker's Walk scenic trail</li>
+                        <li>🍓 Homemade chocolate and fruit wines</li>
+                        <li>🌉 Guna Caves and Dolphin's Nose</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kodai-guna-cave.jpeg"
+                            alt="Rows of tea plantations near Kodaikanal">
+                        <div class="g-overlay"><span class="g-cap">Kodaikanal · Guna Cave</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kodai-vattakanal.jpeg"
+                            alt="Dense shola forest around Kodaikanal lake">
+                        <div class="g-overlay"><span class="g-cap">Kodaikanal · vattakanal falls</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kodai-lake.jpg"
+                            alt="Dense shola forest around Kodaikanal lake">
+                        <div class="g-overlay"><span class="g-cap">Kodaikanal · lake</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kodai-hills.jpeg"
+                            alt="Dense shola forest around Kodaikanal lake">
+                        <div class="g-overlay"><span class="g-cap">Kodaikanal · hills</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Yercaud ===== -->
+            <div class="station-panel" data-category="yercaud">
+                <div class="station-intro">
+                    <h3>🏞️ Yercaud – The Jewel of the South</h3>
+                    <p>Tucked in the Shevaroy Hills, Yercaud stays quieter and less commercial than the bigger
+                        stations, with coffee estates, orange orchards and the calm waters of Emerald Lake at
+                        its centre.</p>
+                    <p class="station-highlights-label">☕ What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🛶 Boating on Emerald Lake</li>
+                        <li>🌰 Coffee and spice plantation walks</li>
+                        <li>💧 Agaya Gangai and Killiyur waterfalls</li>
+                        <li>🌳 Anna Park and rose gardens</li>
+                        <li>👁️ Lady's Seat and Pagoda Point views</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=600&q=80"
+                            alt="Waterfall cascading through forest at Yercaud">
+                        <div class="g-overlay"><span class="g-cap">Yercaud · Killiyur Waterfalls</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/yercaud.jpg" alt="Forested slopes around Yercaud lake">
+                        <div class="g-overlay"><span class="g-cap">Yercaud · Forest Trails</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/yercaud-lake.jpeg"
+                            alt="Waterfall cascading through forest at Yercaud">
+                        <div class="g-overlay"><span class="g-cap">Yercaud · lake</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/yercaud-pagoda.jpg" alt="Forested slopes around Yercaud lake">
+                        <div class="g-overlay"><span class="g-cap">Yercaud · Forest Trails</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Yelagiri ===== -->
+            <div class="station-panel" data-category="yelagiri">
+                <div class="station-intro">
+                    <h3>🪂 Yelagiri – The Offbeat Adventure Hill</h3>
+                    <p>A small, uncrowded hill station near Vellore, Yelagiri is popular for adventure activities
+                        and orchard-covered slopes rather than sightseeing — a good pick for a short, quiet
+                        getaway.</p>
+                    <p class="station-highlights-label">🧗 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🪂 Paragliding over the valley</li>
+                        <li>🚣 Boating at Punganur Lake</li>
+                        <li>🍊 Fruit orchard and rose garden visits</li>
+                        <li>🥾 Swamimalai hill trekking</li>
+                        <li>⛺ Camping and adventure parks</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/yelagiri-punganur-lake.jpg"
+                            alt="Traditional South Indian temple architecture at Yelagiri">
+                        <div class="g-overlay"><span class="g-cap">Yelagiri · Punganur Lake</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/yelagiri-swamimalai-trek.jpg"
+                            alt="Local culture and traditional architecture near Yelagiri">
+                        <div class="g-overlay"><span class="g-cap">Yelagiri · Swamimalai Trek </span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/yelagiri-nature-park.jpg"
+                            alt="Local culture and traditional architecture near Yelagiri">
+                        <div class="g-overlay"><span class="g-cap">Yelagiri · Nature park </span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/yelagiri-fundera-park.jpg"
+                            alt="Local culture and traditional architecture near Yelagiri">
+                        <div class="g-overlay"><span class="g-cap">Yelagiri · Fundera Park (Birtds,aquariam,animals)
+                            </span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Coonoor ===== -->
+            <div class="station-panel" data-category="coonoor">
+                <div class="station-intro">
+                    <h3>🍃 Coonoor – Tea Capital of the Nilgiris</h3>
+                    <p>The second-largest hill station in the Nilgiris, Coonoor is quieter than Ooty but just as
+                        scenic, wrapped in rolling tea estates and dramatic cliffside viewpoints.</p>
+                    <p class="station-highlights-label">🌄 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🍵 Sim's Park botanical garden</li>
+                        <li>🪨 Lamb's Rock viewpoint</li>
+                        <li>🐬 Dolphin's Nose cliff view</li>
+                        <li>🚂 Nilgiri toy train halt</li>
+                        <li>🌿 Tea factory tours and tasting</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/coonoor_Sims-park.jpg" alt="Tea estates around Coonoor">
+                        <div class="g-overlay"><span class="g-cap">Coonoor · Sim's park</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/coonoor_ketti-valley.jpg"
+                            alt="Nilgiri mountain views from Coonoor">
+                        <div class="g-overlay"><span class="g-cap">Coonoor · Ketty Valley</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/coonoor-Dolphin's-nose.jpeg"
+                            alt="Nilgiri mountain views from Coonoor">
+                        <div class="g-overlay"><span class="g-cap">Coonoor · Dolphine Nose</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/coonoor-Lambs-rock.jpg"
+                            alt="Nilgiri mountain views from Coonoor">
+                        <div class="g-overlay"><span class="g-cap">Coonoor · Lambs Rock</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Valparai ===== -->
+            <div class="station-panel" data-category="valparai">
+                <div class="station-intro">
+                    <h3>🐘 Valparai – Plantations and Wildlife</h3>
+                    <p>Reached by a hairpin-bend ghat road through the Anamalai Tiger Reserve, Valparai combines
+                        sprawling tea and coffee estates with genuine chances to spot elephants, gaur and hornbills.</p>
+                    <p class="station-highlights-label">🦌 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🐘 Wildlife sightings en route</li>
+                        <li>🍃 Tea and coffee estate drives</li>
+                        <li>🏞️ Aliyar and Sholayar dam views</li>
+                        <li>🦜 Birdwatching in the rainforest</li>
+                        <li>🌧️ Waterfalls in the monsoon</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/vaalparai-Aliyar-dam.jpeg"
+                            alt="Rows of tea plantations in Valparai">
+                        <div class="g-overlay"><span class="g-cap">Valparai ·Aliyar Dam </span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/vaalparai-Athirapalli.jpeg"
+                            alt="Rainforest canopy in Valparai">
+                        <div class="g-overlay"><span class="g-cap">Valparai · Aathirapalli - valparai (Wildlife
+                                sightings en route) </span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/vaalparai-Kuzhangal-River.jpg"
+                            alt="Rainforest canopy in Valparai">
+                        <div class="g-overlay"><span class="g-cap">Valparai · Kuzhangal River</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/vaalparai-nallamudi-poonjolai.jpg"
+                            alt="Rainforest canopy in Valparai">
+                        <div class="g-overlay"><span class="g-cap">Valparai · Nallamudi Poonjolai</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Kotagiri ===== -->
+            <div class="station-panel" data-category="kotagiri">
+                <div class="station-intro">
+                    <h3>🌤️ Kotagiri – The Oldest Nilgiri Hill Station</h3>
+                    <p>Quieter and less developed than its neighbours, Kotagiri sits at a higher altitude with
+                        clearer views over tea gardens and valleys, and fewer crowds at its viewpoints.</p>
+                    <p class="station-highlights-label">🍂 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>💧 Catherine Falls</li>
+                        <li>🍃 Terraced tea garden views</li>
+                        <li>👁️ Kodanadu viewpoint</li>
+                        <li>🥾 Quiet trekking trails</li>
+                        <li>🌄 Elk Falls nearby</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kotagiri-longwood.jpg" alt="Shola forest near Kotagiri">
+                        <div class="g-overlay"><span class="g-cap">Kotagiri · Long wood Shola Forests </span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kotagiri-elk-falls.jpeg" alt="Mountain ridges around Kotagiri">
+                        <div class="g-overlay"><span class="g-cap">Kotagiri · Elk Falls</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kotagiri-Catherine-Falls.jpg" alt="Shola forest near Kotagiri">
+                        <div class="g-overlay"><span class="g-cap">Kotagiri · Chatherine Waterfall </span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kotagiri-Kodanad-View-Point.jpg" alt="Shola forest near Kotagiri">
+                        <div class="g-overlay"><span class="g-cap">Kotagiri · Kodanad View Point </span></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== Kolli Hills ===== -->
+            <div class="station-panel" data-category="kolli-hills">
+                <div class="station-intro">
+                    <h3>🌀 Kolli Hills – The Hills of Death, Reborn as a Retreat</h3>
+                    <p>Reached by a road with 70 hairpin bends, Kolli Hills remains one of Tamil Nadu's least
+                        crowded hill destinations, with betel-leaf farms, waterfalls and forest views.</p>
+                    <p class="station-highlights-label">🛣️ What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🌀 The famous 70-hairpin-bend drive</li>
+                        <li>💧 Agaya Gangai Falls</li>
+                        <li>🌿 Betel leaf and coffee farms</li>
+                        <li>🗿 Ariyur medicinal plant garden</li>
+                        <li>🏔️ Seekuparai viewpoint</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kolli-hills.jpg"
+                            alt="Waterfall in the Kolli Hills">
+                        <div class="g-overlay"><span class="g-cap">Kolli Hills · 70 Hairpin Bends Route</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kollihills-aagaya-gangai.jpeg"
+                            alt="Forested slopes of the Kolli Hills">
+                        <div class="g-overlay"><span class="g-cap">Kolli Hills · Aagaya Gangai Waterfalls</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kollihills-seekuparai-view-point.jpg"
+                            alt="Forested slopes of the Kolli Hills">
+                        <div class="g-overlay"><span class="g-cap">Kolli Hills · Seekuparai View Point</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kollihills-Herbs garden.jpg"
+                            alt="Forested slopes of the Kolli Hills">
+                        <div class="g-overlay"><span class="g-cap">Kolli Hills · A Paradise Of Herbs</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Meghamalai ===== -->
+            <div class="station-panel" data-category="meghamalai">
+                <div class="station-intro">
+                    <h3>☁️ Meghamalai – The High Wavy Mountains</h3>
+                    <p>A remote, sparsely visited tea-growing region on the Tamil Nadu–Kerala border, Meghamalai
+                        is prized for its biodiversity and near-total absence of tourist crowds.</p>
+                    <p class="station-highlights-label">🌧️ What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🍃 Remote tea estate landscapes</li>
+                        <li>💧 Hidden waterfalls</li>
+                        <li>🦋 Rich biodiversity and birdlife</li>
+                        <li>🐘 Elephant corridor sightings</li>
+                        <li>🏕️ Off-the-grid quiet</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/meghamalai-Suruli-Falls.jpg"
+                            alt="Waterfall in the Meghamalai hills">
+                        <div class="g-overlay"><span class="g-cap">Meghamalai · Suruli Waterfalls</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/meghamalai-tea-plantation.jpeg"
+                            alt="Tea plantations of Meghamalai">
+                        <div class="g-overlay"><span class="g-cap">Meghamalai · Tea Estates</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/meghamalai-wild-life-sancturay.jpg"
+                            alt="Tea plantations of Meghamalai">
+                        <div class="g-overlay"><span class="g-cap">Meghamalai · Meghamalai Wildlife Sancturay</span></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- ===== Manjolai ===== -->
+            <div class="station-panel" data-category="manjolai">
+                <div class="station-intro">
+                    <h3>🔒 Manjolai – The Restricted-Entry Tea Hills</h3>
+                    <p>Deep in the Western Ghats near Tirunelveli, Manjolai's tea estates are still largely closed
+                        to casual tourists, which is exactly why the forests and viewpoints here remain so
+                        pristine.</p>
+                    <p class="station-highlights-label">🍃 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🍃 Untouched tea estate scenery</li>
+                        <li>💧 Remote waterfalls</li>
+                        <li>🌲 Dense, undisturbed forests</li>
+                        <li>🌫️ Misty, winding estate roads</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/manjolai-hills.jpg"
+                            alt="Waterfall near Manjolai">
+                        <div class="g-overlay"><span class="g-cap">Manjolai · Hill</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/manjolai-manimuthar.jpeg"
+                            alt="Tea estates around Manjolai">
+                        <div class="g-overlay"><span class="g-cap">Manjolai · Manimuthar</span></div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <!-- ===== Velliangiri Hills ===== -->
+            <div class="station-panel" data-category="velliangiri">
+                <div class="station-intro">
+                    <h3>🛕 Velliangiri Hills – The Sacred Seven Hills</h3>
+                    <p>Regarded as a spiritual site tied to Lord Shiva and home to the Isha Yoga Center at its
+                        base, Velliangiri draws both pilgrims and trekkers to its steep seven-hill climb.</p>
+                    <p class="station-highlights-label">🙏 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🛕 Seven-hill pilgrimage trek</li>
+                        <li>🧘 Isha Yoga Center visit</li>
+                        <li>🏔️ Panoramic Western Ghats views</li>
+                        <li>🌫️ Misty, forested trail sections</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/velliyangiri-7-hills.jpeg"
+                            alt="Temple architecture at the foot of Velliangiri Hills">
+                        <div class="g-overlay"><span class="g-cap">Velliangiri Hills · Seven Hills Pilgrimage Treck</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/velliyangiri-isha.jpg"
+                            alt="Misty peaks of the Velliangiri Hills">
+                        <div class="g-overlay"><span class="g-cap">Velliangiri Hills · Isha Yoga</span></div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- ===== Kollukkumalai ===== -->
+            <div class="station-panel" data-category="kollukkumalai">
+                <div class="station-intro">
+                    <h3>🌄 Kollukkumalai – Home of the World's Highest Organic Tea Estate</h3>
+                    <p>Reached by a bumpy jeep ride up a near-vertical ghat road, Kollukkumalai rewards early
+                        risers with one of the most famous sunrise views in South India, above a sea of clouds.</p>
+                    <p class="station-highlights-label">🌅 What can you enjoy?</p>
+                    <ul class="station-highlights">
+                        <li>🌅 Iconic above-the-clouds sunrise</li>
+                        <li>🚙 Off-road jeep safari</li>
+                        <li>🍃 World's highest organic tea estate</li>
+                        <li>🏔️ Sweeping mountain panoramas</li>
+                    </ul>
+                </div>
+                <div class="station-gallery">
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kollukkumalai-tea-estate.jpeg"
+                            alt="Waterfall near Kollukkumalai">
+                        <div class="g-overlay"><span class="g-cap">Kollukkumalai · Tea Estate</span></div>
+                    </div>
+                    <div class="g-item">
+                        <img src="assets/image/hills-img/kollukumalai-hill.jpeg"
+                            alt="Sunrise over the highest tea estate at Kollukkumalai">
+                        <div class="g-overlay"><span class="g-cap">Kollukkumalai · Sunrise Point</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox modal -->
+    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="background:transparent; border:none;">
+                <button type="button" class="btn-close btn-close-white ms-auto mb-2" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                <img src="" alt="" style="width:100%; border-radius:var(--radius-md);">
+                <p class="lightbox-caption text-center text-white mt-3"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-to-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            "use strict";
+
+            document.addEventListener("DOMContentLoaded", init);
+
+            function init() {
+                initStationFilter();
+                initLightbox();
+                initBackToTop();
+            }
+
+            /* Switch between station panels */
+            function initStationFilter() {
+                var filterBar = document.querySelector(".btn-section");
+                if (!filterBar) return;
+                var buttons = filterBar.querySelectorAll("button");
+                var panels = document.querySelectorAll(".station-panel");
+
+                function showPanel(cat) {
+                    panels.forEach(function (panel) {
+                        var match = panel.getAttribute("data-category") === cat;
+                        panel.classList.toggle("active-panel", match);
+                    });
+                }
+
+                buttons.forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        buttons.forEach(function (b) { b.classList.remove("active"); });
+                        btn.classList.add("active");
+                        showPanel(btn.getAttribute("data-filter"));
+                    });
+                });
+
+                var activeBtn = filterBar.querySelector("button.active") || buttons[0];
+                if (activeBtn) showPanel(activeBtn.getAttribute("data-filter"));
+            }
+
+            /* Simple lightbox modal for gallery images */
+            function initLightbox() {
+                var modalEl = document.getElementById("lightboxModal");
+                if (!modalEl || !window.bootstrap) return;
+                var modal = new bootstrap.Modal(modalEl);
+                var img = modalEl.querySelector("img");
+                var caption = modalEl.querySelector(".lightbox-caption");
+
+                document.addEventListener("click", function (e) {
+                    var item = e.target.closest(".station-gallery .g-item");
+                    if (!item) return;
+                    var itemImg = item.querySelector("img");
+                    img.src = itemImg.src;
+                    img.alt = itemImg.alt;
+                    caption.textContent = itemImg.alt;
+                    modal.show();
+                });
+
+                modalEl.addEventListener("hidden.bs.modal", function () {
+                    img.src = "";
+                });
+            }
+
+            /* Back-to-top button */
+            function initBackToTop() {
+                var btn = document.querySelector(".back-to-top");
+                if (!btn) return;
+                window.addEventListener("scroll", function () {
+                    btn.classList.toggle("show", window.scrollY > 400);
+                });
+                btn.addEventListener("click", function () {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

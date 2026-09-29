@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Explore the Heritage of Tamil Nadu</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --orange: #ea580c;
+            --gold: #c9a24a;
+            --cream: #fff8ef;
+            --ink: #1f1a17;
+            --muted: #5f5750;
+            --line: rgba(234, 88, 12, 0.28);
+            --head: 'Playfair Display', Georgia, serif;
+            --body: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--ink);
+            font-family: var(--body);
+            overflow: hidden;
+            /* locked while hero splash is showing */
+        }
+
+        body.is-open {
+            overflow: auto;
+        }
+
+        /* ---------- HERO (fixed splash, covers content) ---------- */
+        .hero-page {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            padding-top: calc(24px + env(safe-area-inset-top, 0px));
+            padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+            color: #fff;
+
+            background-image:
+                linear-gradient(180deg, rgba(31, 18, 10, .35) 0%, rgba(24, 14, 9, .55) 55%, rgba(18, 10, 6, .82) 100%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23fcd28a'/%3E%3Cstop offset='45%25' stop-color='%23f2924a'/%3E%3Cstop offset='100%25' stop-color='%237a2f1e'/%3E%3C/linearGradient%3E%3ClinearGradient id='tower' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%235a2412'/%3E%3Cstop offset='100%25' stop-color='%232c1108'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='500' fill='url(%23sky)'/%3E%3Ccircle cx='620' cy='120' r='70' fill='%23ffe3a3' opacity='0.85'/%3E%3Cg fill='url(%23tower)'%3E%3Crect x='330' y='330' width='140' height='170'/%3E%3Cpolygon points='300,330 500,330 470,270 330,270'/%3E%3Cpolygon points='320,270 480,270 455,220 345,220'/%3E%3Cpolygon points='340,220 460,220 440,175 360,175'/%3E%3Cpolygon points='360,175 440,175 420,135 380,135'/%3E%3Cpolygon points='383,135 417,135 400,95'/%3E%3Ccircle cx='400' cy='80' r='9'/%3E%3C/g%3E%3Cg fill='%23230f07' opacity='0.9'%3E%3Crect x='0' y='420' width='800' height='80'/%3E%3Cpolygon points='40,420 110,420 95,360 55,360'/%3E%3Cpolygon points='650,420 730,420 712,350 668,350'/%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+            transition: opacity .7s ease, visibility .7s ease, transform .7s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        body.is-open .hero-page {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: scale(1.04);
+        }
+
+        .hero-inner {
+            max-width: 640px;
+        }
+
+        .hero-page .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid rgba(255, 255, 255, .5);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, .12);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: #ffdca6;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        .hero-page h1 {
+            font-family: var(--head);
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            margin: 20px 0 14px;
+            line-height: 1.15;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, .4);
+        }
+
+        .hero-page .lead {
+            color: #ffe9cf;
+            line-height: 1.75;
+            margin: 0 0 28px;
+        }
+
+        .my-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 30px;
+            background-color: var(--orange);
+            color: #fff;
+            font: 600 0.95rem var(--body);
+            text-decoration: none;
+            border: 0;
+            border-radius: 55px;
+            cursor: pointer;
+            box-shadow: 0 12px 28px rgba(234, 88, 12, .4);
+            transition: background-color .3s, transform .3s, box-shadow .3s;
+        }
+
+        .my-btn:hover {
+            background-color: #d1550c;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(234, 88, 12, .5);
+        }
+
+        .my-btn svg {
+            transition: transform .3s;
+        }
+
+        .my-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ---------- Main content (sits normally behind the fixed hero) ---------- */
+        #content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
+        }
+
+        .heading {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 32px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid var(--line);
+            border-radius: 50px;
+            background: #fff;
+            color: var(--orange);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        h1 {
+            font-family: var(--head);
+            font-size: clamp(2rem, 4.4vw, 3.1rem);
+            margin: 18px 0 12px;
+            line-height: 1.15;
+        }
+
+        .lead {
+            color: var(--muted);
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 0 40px;
+            padding: 0;
+        }
+
+        .tab {
+            min-height: 44px;
+            padding: 10px 20px;
+            border: 1px solid var(--line);
+            border-radius: 50px;
+            background: #fff;
+            color: var(--ink);
+            font: 500 0.9rem var(--body);
+            cursor: pointer;
+            transition: background .25s, color .25s, border-color .25s, transform .25s;
+        }
+
+        .tab:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .tab[aria-selected="true"] {
+            background: var(--orange);
+            border-color: var(--orange);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .tab:focus-visible,
+        .card:focus-visible,
+        .close:focus-visible,
+        .my-btn:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        .panel[hidden] {
+            display: none;
+        }
+
+        .panel-title {
+            font-family: var(--head);
+            font-size: 1.7rem;
+            margin: 0 0 6px;
+        }
+
+        .panel-intro {
+            color: var(--muted);
+            margin: 0 0 26px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            position: relative;
+            min-height: 280px;
+            border: 0;
+            padding: 0;
+            border-radius: 22px;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: left;
+            color: #fff;
+            font-family: var(--body);
+            background-color: var(--c2);
+            background-image: var(--icon), linear-gradient(160deg, var(--c1), var(--c2));
+            background-repeat: no-repeat, no-repeat;
+            background-position: center 36%, center;
+            background-size: 46% auto, cover;
+            box-shadow: 0 14px 30px rgba(31, 26, 23, 0.14);
+            transition: transform .4s cubic-bezier(.22, 1, .36, 1), box-shadow .4s, background-size .5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 46px rgba(31, 26, 23, 0.22);
+            background-size: 52% auto, cover;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(20, 14, 10, .88) 0%, rgba(20, 14, 10, .15) 48%, rgba(20, 14, 10, .05) 70%);
+        }
+
+        .card-body {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 3px 10px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, .2);
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+
+        .card-name {
+            margin: 0 0 4px;
+            font-family: var(--head);
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+
+        .card-place {
+            margin: 0;
+            font-size: .85rem;
+            color: #ffcf8a;
+        }
+
+        dialog {
+            width: min(640px, calc(100% - 32px));
+            max-height: 88vh;
+            padding: 0;
+            border: 0;
+            border-radius: 24px;
+            background: #fff;
+            color: var(--ink);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .4);
+            font-family: var(--body);
+        }
+
+        dialog::backdrop {
+            background: rgba(14, 10, 8, .7);
+        }
+
+        .dlg-wrap {
+            position: relative;
+        }
+
+        .dlg-head {
+            position: relative;
+            overflow: hidden;
+            padding: 28px 28px 22px;
+            color: #fff;
+            background-color: var(--c2);
+            background-image: var(--icon), linear-gradient(160deg, var(--c1), var(--c2));
+            background-repeat: no-repeat, no-repeat;
+            background-position: right -10px top -10px, center;
+            background-size: 34% auto, cover;
+        }
+
+        .dlg-head::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .05) 55%);
+        }
+
+        .dlg-head>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .dlg-head .card-tag {
+            background: rgba(255, 255, 255, .2);
+        }
+
+        .dlg-head h2 {
+            margin: 8px 0 4px;
+            font-family: var(--head);
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .dlg-head p {
+            margin: 0;
+            color: #ffe1b5;
+        }
+
+        .dlg-body {
+            padding: 24px 28px 30px;
+        }
+
+        .dlg-body p {
+            line-height: 1.75;
+            color: var(--muted);
+            margin: 0 0 18px;
+        }
+
+        .dlg-body h3 {
+            font-size: .85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin: 0 0 8px;
+        }
+
+        .dlg-body ul {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, .5);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .25);
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            background: var(--orange);
+        }
+
+        @media (max-width: 575px) {
+            #content {
+                padding: 40px 14px 60px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .card {
+                min-height: 240px;
+            }
+
+            .dlg-head,
+            .dlg-body {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero-page" id="heroPage">
+        <div class="hero-inner">
+            <span class="badge">HERITAGE OF TAMIL NADU</span>
+            <h1>Explore the Heritage of Tamil Nadu</h1>
+            <p class="lead">Forts, palaces, museums, dams and ancient caves, all in
+                one guide with Laloo Travel &amp; Tours.</p>
+            <button type="button" class="my-btn" id="exploreBtn">
+                Explore
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+    </section>
+    <main id="content" aria-hidden="true">
+        <header class="heading">
+            <span class="badge">HERITAGE OF TAMIL NADU</span>
+            <h1>Explore the Heritage of Tamil Nadu</h1>
+            <p class="lead">Forts, palaces, museums, dams, living culture and ancient caves, all in
+                one guide with Laloo Travel &amp; Tours.</p>
+        </header>
+        <div class="tabs" role="tablist" aria-label="Heritage categories" id="tabs"></div>
+        <div id="panels"></div>
+    </main>
+    <dialog id="detail" aria-labelledby="detailTitle">
+        <div class="dlg-wrap">
+            <div class="dlg-head" id="detailHead">
+                <span class="card-tag" id="detailTag"></span>
+                <h2 id="detailTitle"></h2>
+                <p id="detailPlace"></p>
+            </div>
+            <button type="button" class="close" id="detailClose" aria-label="Close details">&times;</button>
+            <div class="dlg-body">
+                <p id="detailDesc"></p>
+                <h3>Highlights</h3>
+                <ul id="detailFacts"></ul>
+            </div>
+        </div>
+    </dialog>
+    <script>
+        /* ============================================================
+           HOW TO ADD YOUR OWN PHOTOS
+        ============================================================ */
+        const SECTIONS = [
+            {
+                id: 'forts', label: 'Forts', c1: '#b45309', c2: '#78350f',
+                icon: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='28' y='42' width='44' height='48' fill='white' fill-opacity='0.85'/%3E%3Crect x='28' y='30' width='9' height='13' fill='white' fill-opacity='0.85'/%3E%3Crect x='45.5' y='30' width='9' height='13' fill='white' fill-opacity='0.85'/%3E%3Crect x='63' y='30' width='9' height='13' fill='white' fill-opacity='0.85'/%3E%3Crect x='44' y='58' width='12' height='32' fill='%23000000' fill-opacity='0.18'/%3E%3C/svg%3E\")",
+                intro: 'Hilltop citadels and fortified cities shaped by Cholas, Nayaks, Marathas and colonial powers.',
+                items: [
+                    {name: 'Gingee Fort', place: 'Tiruvannamalai district', desc: 'A sprawling hill fortress often called the "Troy of the East", with three citadels joined by massive stone walls.', facts: ['Built across three granite hills', 'Ruled by Cholas, Vijayanagara, Nayaks and Marathas', 'Rock-cut temples on its slopes'], img: 'assets/image/heritage/fort-Gingee-.jpg'},
+                    {name: 'Vellore Fort', place: 'Vellore', desc: 'A moated fort built in the 16th century, with strong walls, a temple and a historic palace inside.', facts: ['Built during the Vijayanagara period', 'Site of the 1806 Vellore mutiny', 'Houses the Jalakanteswarar Temple'], img: 'assets/image/heritage/fort-vellore.jpeg'},
+                    {name: 'Fort St. George', place: 'Chennai', desc: 'The first British fortress in India, built by the East India Company and home to the state legislature today.', facts: ['Construction began in 1644', 'Houses St. Mary\'s Church, one of the oldest Anglican churches in India', 'Museum with colonial-era artefacts'], img: 'assets/image/heritage/Fort_St.George.jpg'},
+                    {name: 'Dindigul Fort', place: 'Dindigul', desc: 'A hilltop fort raised by the Madurai Nayaks, later held by Hyder Ali and Tipu Sultan, with wide views of the town.', facts: ['Built in 1605', 'Views over the town and plains', 'Has a temple on the rock top'], img: 'assets/image/heritage/fort-dindigul.jpeg'}
+                ]
+            },
+            {
+                id: 'palaces', label: 'Palaces', c1: '#9a3412', c2: '#431407',
+                icon: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='55' width='60' height='35' fill='white' fill-opacity='0.85'/%3E%3Cpath d='M50 18 a20 20 0 0 1 20 20 h-40 a20 20 0 0 1 20-20 z' fill='white' fill-opacity='0.85'/%3E%3Ccircle cx='50' cy='13' r='4' fill='white' fill-opacity='0.85'/%3E%3Crect x='30' y='65' width='10' height='25' fill='%23000000' fill-opacity='0.18'/%3E%3Crect x='60' y='65' width='10' height='25' fill='%23000000' fill-opacity='0.18'/%3E%3C/svg%3E\")",
+                intro: 'Royal residences where Nayak, Maratha and Chettiar families built grand courtyards and halls.',
+                items: [
+                    {name: 'Thirumalai Nayak Palace', place: 'Madurai', desc: 'Built in 1636, this Indo-Saracenic palace is known for towering pillars, carved arches and a vast central courtyard.', facts: ['Built by Thirumalai Nayak', 'Famous stucco work and pillared halls', 'Hosts light and sound shows'], img: 'assets/image/heritage/palace-thirumalai-nayakar-mahal.jpg'},
+                    {name: 'Thanjavur Maratha Palace', place: 'Thanjavur', desc: 'A palace complex within the old Thanjavur fort, with a durbar hall, a museum and a library.', facts: ['Home of the Maratha rulers of Thanjavur', 'Contains the Saraswathi Mahal Library', 'Art gallery with Chola bronzes and paintings'], img: 'assets/image/heritage/palace-thanjavur.jpeg'},
+                    {name: 'Chettinad Palaces', place: 'Chettinad', desc: 'Mansions of teak, granite and hand-painted Athangudi tiles, built by the Nattukottai Chettiar merchant families.', facts: ['Carved teak pillars and imported fittings', 'Athangudi tiles made by hand', 'Many now run as heritage stays'], img: 'assets/image/heritage/palace-athangudi.jpg'},
+                    {name: 'Chettinad Palaces', place: 'karaikudi Chettinad', desc: 'Built in 1912, this grand mansion is an iconic example of opulent Chettinad architecture featuring Italian marble.', facts: ['Carved teak pillars and imported fittings,Chettinad architecture featuring Italian marble, Burmese teak, and intricate local craftsmanship'], img: 'assets/image/heritage/palace-chettinad-chithambaram-vilas.jpg'},
+                    {name: 'pathmPadmanabhapuram Palace ', place: 'kanyakumari', desc: 'this wooden architectural marvel is celebrated for its exquisite rosewood carvings, antique furnishings, and traditional Kerala-style palace design.', facts: ['Carved teak pillars and imported fittings', 'Many now run as heritage stays'], img: 'assets/image/heritage/palace-padmanabhapuram.jpg'}
+                ]
+            },
+            {
+                id: 'museums', label: 'Museums', c1: '#0f766e', c2: '#134e4a',
+                icon: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='20,45 50,20 80,45' fill='white' fill-opacity='0.85'/%3E%3Crect x='18' y='45' width='64' height='7' fill='white' fill-opacity='0.85'/%3E%3Crect x='25' y='54' width='8' height='30' fill='white' fill-opacity='0.85'/%3E%3Crect x='41' y='54' width='8' height='30' fill='white' fill-opacity='0.85'/%3E%3Crect x='57' y='54' width='8' height='30' fill='white' fill-opacity='0.85'/%3E%3Crect x='73' y='54' width='8' height='30' fill='white' fill-opacity='0.85'/%3E%3Crect x='18' y='85' width='64' height='6' fill='white' fill-opacity='0.85'/%3E%3C/svg%3E\")",
+                intro: 'Collections of bronzes, manuscripts, sculpture and natural history from across the state.',
+                items: [
+                    {name: 'Government Museum', place: 'Chennai', desc: 'One of India\'s oldest museums, with an outstanding collection of Chola bronzes, archaeology and natural history.', facts: ['Founded in 1851', 'Famous Chola bronze gallery', 'Sections on archaeology, numismatics and geology'], img: 'assets/image/heritage/m-government-museum-chennai.jpg'},
+                    {name: 'Saraswathi Mahal Library', place: 'Thanjavur', desc: 'A historic library holding palm-leaf manuscripts and rare books gathered by Thanjavur\'s rulers.', facts: ['Manuscripts on palm leaf and paper', 'Collection of Tamil and Sanskrit texts', 'Part of the Thanjavur palace complex'], img: 'assets/image/heritage/m-sarasvathi-museum-thanjavur.jpg'},
+                    {name: 'Thanjavur Art Gallery', place: 'Thanjavur', desc: 'A gallery displaying Chola bronzes, Thanjavur paintings and Nayak-era sculpture.', facts: ['Traditional Thanjavur paintings', 'Bronze idols in Chola style', 'Located inside the palace grounds'], img: 'assets/image/heritage/m-Art-gallery.jpg'}
+                ]
+            },
+            {
+                id: 'dams', label: 'Dams', c1: '#1d4ed8', c2: '#1e3a8a',
+                icon: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='15' y='25' width='70' height='28' fill='white' fill-opacity='0.85'/%3E%3Crect x='15' y='53' width='70' height='7' fill='white' fill-opacity='0.55'/%3E%3Cpath d='M10 74 q10 -10 20 0 t20 0 t20 0 t20 0' stroke='white' stroke-opacity='0.85' stroke-width='4.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M10 87 q10 -10 20 0 t20 0 t20 0 t20 0' stroke='white' stroke-opacity='0.55' stroke-width='4.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\")",
+                intro: 'Reservoirs on the Kaveri, Bhavani and other rivers that irrigate the fertile delta.',
+                items: [
+                    {name: 'Mettur Dam', place: 'Mettur', desc: 'A major dam across the Kaveri, completed in 1934 and known as Stanley Reservoir, irrigating the delta.', facts: ['Completed in 1934', 'Stanley Reservoir behind the dam', 'Garden and boating near the dam'], img: 'assets/image/heritage/dam-mettur.jpeg'},
+                    {name: 'Bhavani Sagar Dam', place: 'Erode district', desc: 'A large earthen dam built across the Bhavani river, where it feeds into the Kaveri system.', facts: ['Built in 1955', 'Large reservoir with boating', 'Irrigates the Bhavani basin'], img: 'assets/image/heritage/dam-bhavanisagar.jpg'},
+                    {name: 'Vaigai Dam', place: 'Theni', desc: 'A reservoir on the Vaigai river in the Theni district, surrounded by hills and farmland.', facts: ['Irrigates Madurai and Theni farmland', 'Scenic hill views', 'Popular picnic spot'], img: 'assets/image/heritage/dam-vaigai.jpeg'},
+                    {name: 'Pechiparai Dam', place: 'Kanyakumari district', desc: 'A reservoir set among forested hills in the Western Ghats, known for calm waters and wildlife.', facts: ['Surrounded by Western Ghats forest', 'Boating on the reservoir', 'Good for birdwatching'], img: 'assets/image/heritage/dam-pechiparai.jpg'},
+                    {
+                        name: 'Kallanai', place: 'Thanjavur district', desc: 'kallanai (also know as the GRAND ANICUT) is an ancient stone dam built across the kaveri River in Tamil Nadu,and is the oldest water-regulator structure in the world still in use', facts: [' The wide expanse where the Kaveri river splits into multiple branches (including the kollidam and vennaru)offers beautiful views.'],
+                        img: 'assets/image/heritage/dam-thanjavur-kallanai.jpg'
+                    },
+                    {name: 'Sathanur', place: 'Thiruvannamalai district', desc: ' Sathanur Dam is a major gravity dam built across the thenpennai River in the Tiruvannamalai.', facts: ['Film shooting locations', 'Crocodile Farms', 'Fish Grotto & Zoo'], img: 'assets/image/heritage/dam-sathanur.jpg'}
+                ]
+            },
+            {
+                id: 'caves', label: 'Caves', c1: '#4d7c0f', c2: '#1a2e05',
+                icon: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M15 90 v-28 a35 35 0 0 1 70 0 v28 z' fill='white' fill-opacity='0.85'/%3E%3Cpath d='M30 90 v-23 a20 20 0 0 1 40 0 v23 z' fill='%23000000' fill-opacity='0.28'/%3E%3C/svg%3E\")",
+                intro: 'Rock-cut temples and cave shrines carved by Pallava, Pandya and early Jain communities.',
+                items: [
+                    {name: 'Sittanavasal Cave', place: 'Pudukkottai district', desc: 'A Jain rock-cut cave with 7th to 9th century frescoes and carved seats for monks.', facts: ['Ancient Jain shrine', 'Faded frescoes in the cave', 'Rock-cut monk beds'], img: 'assets/image/heritage/cave-Sithanavasal.jpg'},
+                    {name: 'Rock Fort Cave Temple', place: 'Tiruchirappalli', desc: 'A rock-cut temple on the Rock Fort hill, with panoramic views of the city and the Kaveri.', facts: ['Carved from a granite hill', 'Views of the Kaveri plains', 'Reached by a climb of several hundred steps'], img: 'assets/image/heritage/cave-Rock-fort.jpeg'},
+                    {name: 'Kazhugumalai', place: 'Kovilpatti', desc: 'A hill with rock-cut Jain beds and the Vettuvan Koil, a temple carved from the rock face,ellora of Tamil Nadu.', facts: ['Rock-cut temple and shrines', 'Carvings from the Pandya era', 'Scenic hill setting'], img: 'assets/image/heritage/cave-Kazhugumalai.jpeg'}
+                ]
+            }
+        ];
+
+        /* ---------- Hero -> content reveal ---------- */
+        const heroPage = document.getElementById('heroPage');
+        const contentEl = document.getElementById('content');
+        const exploreBtn = document.getElementById('exploreBtn');
+
+        function openContent() {
+            document.body.classList.add('is-open');
+            heroPage.setAttribute('aria-hidden', 'true');
+            contentEl.removeAttribute('aria-hidden');
+            const firstTab = contentEl.querySelector('.tab');
+            if (firstTab) firstTab.focus();
+        }
+        exploreBtn.addEventListener('click', openContent);
+
+        /* ---------- Build tabs, panels, cards ---------- */
+        const tabsEl = document.getElementById('tabs');
+        const panelsEl = document.getElementById('panels');
+        const dialog = document.getElementById('detail');
+        const tabButtons = [];
+
+        SECTIONS.forEach(function (sec, i) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'tab';
+            btn.id = 'tab-' + sec.id;
+            btn.setAttribute('role', 'tab');
+            btn.setAttribute('aria-controls', 'panel-' + sec.id);
+            btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+            btn.textContent = sec.label;
+            btn.addEventListener('click', function () {selectTab(sec.id);});
+            tabsEl.appendChild(btn);
+            tabButtons.push(btn);
+
+            const panel = document.createElement('section');
+            panel.className = 'panel';
+            panel.id = 'panel-' + sec.id;
+            panel.setAttribute('role', 'tabpanel');
+            panel.setAttribute('aria-labelledby', 'tab-' + sec.id);
+            panel.hidden = i !== 0;
+
+            const title = document.createElement('h2');
+            title.className = 'panel-title';
+            title.textContent = sec.label;
+            const intro = document.createElement('p');
+            intro.className = 'panel-intro';
+            intro.textContent = sec.intro;
+            const grid = document.createElement('div');
+            grid.className = 'grid';
+
+            sec.items.forEach(function (item) {
+                const card = document.createElement('button');
+                card.type = 'button';
+                card.className = 'card';
+                card.style.setProperty('--c1', sec.c1);
+                card.style.setProperty('--c2', sec.c2);
+                /* PASTE PHOTOS HERE: if item.img is filled in (in the SECTIONS data above),
+                   the real photo is used full-bleed; otherwise the category watermark icon shows. */
+                card.style.setProperty('--icon', item.img ? 'none' : sec.icon);
+                if (item.img) {
+                    card.style.backgroundImage = "url('" + item.img + "'), linear-gradient(160deg, " + sec.c1 + ", " + sec.c2 + ")";
+                    card.style.backgroundSize = "cover, cover";
+                    card.style.backgroundPosition = "center, center";
+                }
+                card.setAttribute('aria-label', item.name + ', ' + item.place + ': view details');
+
+                const body = document.createElement('div');
+                body.className = 'card-body';
+                const tag = document.createElement('span');
+                tag.className = 'card-tag';
+                tag.textContent = sec.label;
+                const name = document.createElement('h3');
+                name.className = 'card-name';
+                name.textContent = item.name;
+                const place = document.createElement('p');
+                place.className = 'card-place';
+                place.textContent = item.place;
+
+                body.append(tag, name, place);
+                card.appendChild(body);
+                card.addEventListener('click', function () {openDetail(sec, item);});
+                grid.appendChild(card);
+            });
+
+            panel.append(title, intro, grid);
+            panelsEl.appendChild(panel);
+        });
+
+        function selectTab(id) {
+            tabButtons.forEach(function (b) {
+                b.setAttribute('aria-selected', b.id === 'tab-' + id ? 'true' : 'false');
+            });
+            SECTIONS.forEach(function (sec) {
+                document.getElementById('panel-' + sec.id).hidden = sec.id !== id;
+            });
+        }
+
+        let lastFocus = null;
+        function openDetail(sec, item) {
+            lastFocus = document.activeElement;
+            const head = document.getElementById('detailHead');
+            head.style.setProperty('--c1', sec.c1);
+            head.style.setProperty('--c2', sec.c2);
+            head.style.setProperty('--icon', item.img ? 'none' : sec.icon);
+            if (item.img) {
+                head.style.backgroundImage = "url('" + item.img + "'), linear-gradient(160deg, " + sec.c1 + ", " + sec.c2 + ")";
+                head.style.backgroundSize = "cover, cover";
+                head.style.backgroundPosition = "center, center";
+            } else {
+                head.style.backgroundImage = '';
+                head.style.backgroundSize = '';
+                head.style.backgroundPosition = '';
+            }
+            document.getElementById('detailTag').textContent = sec.label;
+            document.getElementById('detailTitle').textContent = item.name;
+            document.getElementById('detailPlace').textContent = item.place + ', Tamil Nadu';
+            document.getElementById('detailDesc').textContent = item.desc;
+            const list = document.getElementById('detailFacts');
+            list.innerHTML = '';
+            item.facts.forEach(function (f) {
+                const li = document.createElement('li');
+                li.textContent = f;
+                list.appendChild(li);
+            });
+            dialog.showModal();
+        }
+
+        document.getElementById('detailClose').addEventListener('click', function () {dialog.close();});
+        dialog.addEventListener('click', function (e) {
+            const r = dialog.getBoundingClientRect();
+            const outside = e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+            if (outside) dialog.close();
+        });
+        dialog.addEventListener('close', function () {if (lastFocus) lastFocus.focus();});
+    </script>
+</body>
+
+</html>
